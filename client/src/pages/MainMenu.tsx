@@ -27,7 +27,7 @@ export default function ClippedDrawer() {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 , background: teal['800']}}>
+      <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 , background: teal['600']}}>
         <Toolbar>
           <Typography variant="h4" noWrap component="div">
           Costa Rica, Solar Panel Detector

@@ -1,3 +1,4 @@
+
 matplotlib
 numpy
 Pillow
@@ -6,3 +7,5 @@ torchvision
 tqdm
 wandb
 albumentations
+segmentation_models_pytorch
+pytorch-lightning==1.5.4
