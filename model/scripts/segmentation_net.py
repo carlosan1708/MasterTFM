@@ -4,11 +4,11 @@ import segmentation_models_pytorch as smp
 import torch
 from torch import nn, optim
 
-LEARNING_RATE = 3e-4
 
+## Custom neuronal net, taken as reference from: https://github.com/qubvel/segmentation_models.pytorch/blob/master/examples/binary_segmentation_intro.ipynb
 class SolarPanelModel(pl.LightningModule):
 
-    def __init__(self, arch, encoder_name,encoder_weights, in_channels, out_classes, **kwargs):
+    def __init__(self, arch, encoder_name,encoder_weights, in_channels, out_classes,learning_rate,threshold,experiment=None, **kwargs):
         super().__init__()
         self.model = smp.create_model(
             arch, encoder_name=encoder_name, encoder_weights=encoder_weights, in_channels=in_channels, classes=out_classes, **kwargs
@@ -22,6 +22,9 @@ class SolarPanelModel(pl.LightningModule):
         # for image segmentation dice loss could be the best first choice
         # self.loss_fn = smp.losses.FocalLoss(smp.losses.BINARY_MODE)
         self.loss_fn = nn.BCEWithLogitsLoss()
+        self.learning_rate = learning_rate
+        self.threshold = threshold
+        self.experiment = experiment
 
     def forward(self, image):
         # normalize image here
@@ -63,7 +66,7 @@ class SolarPanelModel(pl.LightningModule):
         # first convert mask values to probabilities, then 
         # apply thresholding
         prob_mask = logits_mask.sigmoid()
-        pred_mask = (prob_mask > 0.8).float()
+        pred_mask = (prob_mask > self.threshold).float()
 
         # We will compute IoU metric by two ways
         #   1. dataset-wise
@@ -87,6 +90,7 @@ class SolarPanelModel(pl.LightningModule):
         fp = torch.cat([x["fp"] for x in outputs])
         fn = torch.cat([x["fn"] for x in outputs])
         tn = torch.cat([x["tn"] for x in outputs])
+        loss = torch.mean(torch.tensor([x["loss"] for x in outputs]))
 
         # per image IoU means that we first calculate IoU score for each image 
         # and then compute mean over these scores
@@ -102,8 +106,18 @@ class SolarPanelModel(pl.LightningModule):
         metrics = {
             f"{stage}_per_image_iou": per_image_iou,
             f"{stage}_dataset_iou": dataset_iou,
+            f"{stage}_loss": loss,
         }
-        
+        if stage =="valid":
+            print(metrics)
+            self.experiment.log({
+                                f"{stage}_per_image_iou": per_image_iou,
+                                f"{stage}_dataset_iou": dataset_iou,
+                                f"{stage}_loss": loss,
+                                'epoch': self.current_epoch,
+                                'global_step': self.global_step
+                            })
+            self.log("val_loss", loss)
         self.log_dict(metrics, prog_bar=True)
 
     def training_step(self, batch, batch_idx):
@@ -125,4 +139,4 @@ class SolarPanelModel(pl.LightningModule):
         return self.shared_epoch_end(outputs, "test")
 
     def configure_optimizers(self):
-        return optim.Adam(self.parameters(), lr=LEARNING_RATE)
+        return optim.Adam(self.parameters(), lr=self.learning_rate)

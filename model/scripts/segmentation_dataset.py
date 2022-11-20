@@ -5,18 +5,18 @@ import os
 from PIL import Image
 
 class SegmentationDataset(Dataset):
-    def __init__(self, input_dir, output_dir, is_train,is_test, transform=None):
+    def __init__(self, input_dir, output_dir, is_train,is_test, transform=None, train_percentage=None):
         self.input_dir  = input_dir
         self.output_dir = output_dir
         self.transform  = transform
         if is_train == True:
-            x = round(len(os.listdir(input_dir)) * .7)
+            x = round(len(os.listdir(input_dir)) * train_percentage)
             self.images = os.listdir(input_dir)[:x]
         elif is_test == True:
             x = round(len(os.listdir(input_dir)))
             self.images = os.listdir(input_dir)
         else:
-            x = round(len(os.listdir(input_dir)) * .7)
+            x = round(len(os.listdir(input_dir)) * train_percentage)
             self.images = os.listdir(input_dir)[x:]
 
     def __len__(self):
