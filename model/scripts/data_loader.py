@@ -35,16 +35,39 @@ def load_and_transform(TRAIN_IMAGE_DIR, TRAIN_MASK_DIR,TEST_IMAGE_DIR, TEST_MASK
             A.VerticalFlip(p=0.5),
             A.RandomRotate90(p=0.5),
             A.Transpose(p=0.5),
+            A.ShiftScaleRotate(shift_limit=0.01, scale_limit=0.04, rotate_limit=0, p=0.25),
             A.RandomBrightnessContrast(p=0.5),
             A.RandomGamma(p=0.25),
             A.Blur(p=0.01, blur_limit = 2),
             A.OneOf([
-                A.ElasticTransform(p=0.5, interpolation=cv2.INTER_NEAREST),
-                A.GridDistortion(p=0.5, distort_limit=[-0.3, 0.3])
-            ],p=0.9),
-            ToTensorV2(),
+                A.ElasticTransform(p=0.5, alpha=120, sigma=120 * 0.05, alpha_affine=120 * 0.03),
+                A.GridDistortion(p=0.5),
+                A.OpticalDistortion(p=1, distort_limit=2, shift_limit=0.5)                  
+            ],p=0.8),
         ],
     )
+
+    # MOD VERSION
+    # train_transform = A.Compose(
+    #     [
+    #         # A.CenterCrop(width=IMAGE_WIDTH, height=IMAGE_HEIGHT),
+    #         A.Crop(x_min=0, y_min=0,x_max=IMAGE_HEIGHT_ORIGINAL, y_max=IMAGE_HEIGHT_CUT_LOGO),
+    #         A.Resize(width=IMAGE_WIDTH, height=IMAGE_HEIGHT, interpolation =cv2.INTER_NEAREST),
+    #         A.HorizontalFlip(p=0.5),
+    #         A.VerticalFlip(p=0.5),
+    #         A.RandomRotate90(p=0.5),
+    #         A.Transpose(p=0.5),
+    #         A.RandomBrightnessContrast(p=0.5),
+    #         A.RandomGamma(p=0.25),
+    #         A.Blur(p=0.01, blur_limit = 2),
+    #         A.OneOf([
+    #             A.ElasticTransform(p=0.5, interpolation=cv2.INTER_NEAREST),
+    #             A.GridDistortion(p=0.5, distort_limit=[-0.3, 0.3])
+    #         ],p=0.9),
+    #         ToTensorV2(),
+    #     ],
+    # )
+
 
     val_transform = A.Compose(
         [ A.Crop(x_min=0, y_min=0,x_max=IMAGE_HEIGHT_ORIGINAL, y_max=IMAGE_HEIGHT_CUT_LOGO), A.Resize(width=IMAGE_WIDTH, height=IMAGE_HEIGHT, interpolation =cv2.INTER_NEAREST),ToTensorV2()]
@@ -58,3 +81,17 @@ def load_and_transform(TRAIN_IMAGE_DIR, TRAIN_MASK_DIR,TEST_IMAGE_DIR, TEST_MASK
                                 BATCH_SIZE, val_transform)
 
     return train_loader, val_loader, train_ds, train_val_ds, test_loader
+
+
+
+def load_and_transform_test_only(TEST_IMAGE_DIR, TEST_MASK_DIR, BATCH_SIZE, IMAGE_HEIGHT ,IMAGE_WIDTH ):
+
+    val_transform = A.Compose(
+        [ A.Crop(x_min=0, y_min=0,x_max=IMAGE_HEIGHT_ORIGINAL, y_max=IMAGE_HEIGHT_CUT_LOGO), A.Resize(width=IMAGE_WIDTH, height=IMAGE_HEIGHT, interpolation =cv2.INTER_NEAREST),ToTensorV2()]
+        # [ToTensorV2()]
+    )
+
+    test_loader = get_loaders_test( TEST_IMAGE_DIR, TEST_MASK_DIR,
+                                BATCH_SIZE, val_transform)
+
+    return test_loader
