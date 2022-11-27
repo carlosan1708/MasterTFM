@@ -1,0 +1,6 @@
+Flask==2.0.3
+segmentation_models_pytorch==0.3.0
+pytorch-lightning==1.5.4
+segmentation-mask-overlay
+torch==1.13.0
+torchvision==0.14.0

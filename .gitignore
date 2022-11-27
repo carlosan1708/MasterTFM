@@ -186,3 +186,8 @@ model/dataset/**
 model/lightning_logs/**
 model/wandb/**
 model/models/**
+
+server/python/**
+
+server/test/**
+server/model/**

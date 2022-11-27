@@ -44,11 +44,10 @@ def load_and_transform(TRAIN_IMAGE_DIR, TRAIN_MASK_DIR,TEST_IMAGE_DIR, TEST_MASK
                 A.GridDistortion(p=0.5),
                 A.OpticalDistortion(p=1, distort_limit=2, shift_limit=0.5)                  
             ],p=0.8),
-            ToTensorV2(),
         ],
     )
 
-    # # MOD VERSION
+    # MOD VERSION
     # train_transform = A.Compose(
     #     [
     #         # A.CenterCrop(width=IMAGE_WIDTH, height=IMAGE_HEIGHT),
