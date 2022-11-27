@@ -35,7 +35,7 @@ def transform_image(image_bytes):
 import requests
 def get_image_from_google(coordinates, zoom_level = 19):
     print(coordinates)
-    API_KEY = "AIzaSyBXEewBZh9887mCPr2B2nUbC4x4eHuLP20"
+    API_KEY = "AIzaSyBzlzBzX3lLm_WaFrv3L3Or7FENc2q6yMw"
     URL = 'https://maps.googleapis.com/maps/api/staticmap?center={}&zoom={}&size=1280x1280&maptype=satellite&scale=2'.format(coordinates,zoom_level)
     URL_WITH_KEY = URL + '&key=' + API_KEY
     # HTTP request
@@ -100,20 +100,20 @@ def predict():
     
     ax.imshow(image_mask, cmap='jet', alpha=0.5)
 
-    # pic_IObytes = io.BytesIO()
-    # fig.savefig("test.png", format='png')
-    # img_str = base64.b64encode(pic_IObytes.getvalue()).decode("utf-8")
+    pic_IObytes = io.BytesIO()
+    fig.savefig(pic_IObytes, format='png')
+    img_str = base64.b64encode(pic_IObytes.getvalue()).decode("utf-8")
 
-    fig.savefig("result.png", format='png') 
+    # fig.savefig("result.png", format='png') 
     
-    cached_img = open("result.png")
+    # cached_img = open("result.png")
 
-    cached_img_b64 = base64.b64encode(cached_img.read())
+    # cached_img_b64 = base64.b64encode(cached_img.read())
 
-    os.remove("result.png")
+
 
     # return jsonify({'status': True, 'image': img_str})
-    return jsonify({'status': True, 'image': cached_img_b64})
+    return jsonify({'status': True, 'image': img_str})
 
 
 if __name__=="__main__":
