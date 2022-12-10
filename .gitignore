@@ -182,12 +182,14 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-model/dataset/**
-model/lightning_logs/**
-model/wandb/**
-model/models/**
-
 server/python/**
 
 server/test/**
 server/model/**
+
+experiments/**
+*.png
+**/wandb/**
+**/lightning_logs/**
+**/models/**
+*.ckpt

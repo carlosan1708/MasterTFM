@@ -1,9 +1,0 @@
-matplotlib
-numpy
-tqdm
-Pillow==9.2.0
-wandb==0.13.4
-albumentations==0.4.3
-segmentation_models_pytorch==0.3.0
-pytorch-lightning==1.5.4
-Flask==1.0.2
