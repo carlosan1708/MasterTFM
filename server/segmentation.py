@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 import matplotlib.image
 import os
 from flask_cors import CORS
+import numpy as np
 
 app = Flask(__name__)
 CORS(app)
@@ -43,10 +44,6 @@ def get_image_from_google(coordinates, zoom_level = 19):
     response = requests.get(URL_WITH_KEY)
     print(response)
     app.logger.info(response)
-    with open("google.png", 'wb') as file:
-        # writing data into the file
-        file.write(response.content)
-
     return response.content
   
     
@@ -74,6 +71,12 @@ def predict_segmentation():
         print('eval completed')
     pr_masks = logits.sigmoid()
     image_mask = pr_masks.numpy().squeeze()
+    # Create a binary mask indicating which values in the prediction are greater than 1
+    mask_total = torch.lt(pr_masks, 0.9)
+
+    # Calculate the percentage of mask values that are greater than 1
+    percentage = mask_total.sum().item() / mask_total.numel()
+
     image_numpy = tensor.numpy().squeeze()
 
     fig, ax = plt.subplots()
@@ -85,7 +88,7 @@ def predict_segmentation():
     fig.savefig(pic_IObytes, format='png')
     img_str = base64.b64encode(pic_IObytes.getvalue()).decode("utf-8")
 
-    return jsonify({'status': True, 'image': img_str})
+    return jsonify({'status': True, 'image': img_str, 'percentage': round(percentage, 3)})
 
 
 if __name__=="__main__":
