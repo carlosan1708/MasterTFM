@@ -6,10 +6,24 @@ let theme = createTheme({
         mode: 'dark',
           divider: grey[200],
           text: {
-            primary: grey[50],
+            primary: '#77a69d',
             secondary: grey[50],
           },
+          info: {main: '#DFF5CE'},
+          success: {main: '#FFE77AFF'},
       },
+      components: {
+        MuiCssBaseline: {
+          styleOverrides: {
+            body: {
+              background: 'radial-gradient(circle, rgba(24,54,15,1) 0%, rgba(10,75,35,1) 100%);',
+              backgroundRepeat: "no-repeat",
+              backgroundAttachment: "fixed",
+            },
+          },
+        }
+
+      }
 });
 
 theme = createTheme(theme, {

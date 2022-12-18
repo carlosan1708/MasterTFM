@@ -1,0 +1,13 @@
+FROM python:3.9
+
+COPY classification.py requirements.txt ./app/
+COPY scripts/classification_model.py ./app/scripts/
+COPY model/classification12802efficientnet_b0.pt app/model/
+WORKDIR /app
+RUN apt-get update && apt-get install -y python3-opencv
+RUN python3.9 -m pip install --default-timeout=9000 -r requirements.txt -t .
+RUN pip install opencv-python
+RUN pip install matplotlib
+
+ENTRYPOINT [ "python" ]
+CMD ["classification.py" ]

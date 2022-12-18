@@ -1,0 +1,173 @@
+.plants {
+    width: 20.375em;
+    height: 10.25em;
+    position: absolute;
+    top: 80%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+}
+
+.plants2 {
+    width: 20.375em;
+    height: 10.25em;
+    position: absolute;
+    top: 80%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+}
+
+.plants3 {
+    width: 20.375em;
+    height: 10.25em;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.plant {
+    position: relative;
+    top: 5em;
+    left: 7em;
+    width: 9.515em;
+    height: 15.765em;
+    /*   border: 1px solid black; */
+}
+
+.leave {
+    background: rgb(98, 189, 116);
+    background: linear-gradient(-45deg, rgba(56, 114, 68, 1)50%, rgba(98, 189, 116, 1) 50%);
+    width: 90px;
+    height: 90px;
+    position: absolute;
+    top: 2.73em;
+    left: 1.7em;
+    border-radius: 100% 0% 100% 0% / 100% 0% 100% 0%;
+    transform: rotate(-45deg);
+    z-index: 0;
+}
+
+.leave::before {
+    content: '';
+    background: rgb(98, 189, 116);
+    background: linear-gradient(-45deg, rgba(56, 114, 68, 1)50%, rgba(98, 189, 116, 1) 50%);
+    width: 90px;
+    height: 90px;
+    position: absolute;
+    top: -10px;
+    left: -36px;
+    border-radius: 100% 0% 100% 0% / 100% 0% 100% 0%;
+    transform: rotate(-25deg);
+    z-index: 1;
+
+}
+
+.leave::after {
+    content: '';
+    background: rgb(98, 189, 116);
+    background: linear-gradient(-45deg, rgba(98, 189, 116, 1) 50%, rgba(56, 114, 68, 1) 50%);
+    width: 90px;
+    height: 90px;
+    position: absolute;
+    top: 40px;
+    left: 13px;
+    border-radius: 100% 0% 100% 0% / 100% 0% 100% 0%;
+    transform: rotate(-155deg);
+    z-index: 1;
+
+}
+
+.pot {
+
+    background: rgb(255, 145, 113);
+    background: linear-gradient(90deg, rgba(255, 145, 113, 0.56) 50%, rgb(207, 96, 72, 0.56) 50%), linear-gradient(0deg, rgba(255, 145, 113, 1) 70%, rgba(255, 225, 216, 1) 70%, rgba(255, 225, 216, 1) 87%, rgba(255, 153, 123, 1) 87%);
+    width: 9.375em;
+    height: 6.25em;
+    position: absolute;
+    top: 9.515em;
+    border-radius: 30% 30% 30% 30% / 50% 50% 50% 50%;
+    -webkit-box-shadow: -2px 15px 28px -11px rgba(0, 0, 0, 0.49);
+    -moz-box-shadow: -2px 15px 28px -11px rgba(0, 0, 0, 0.49);
+    box-shadow: -2px 15px 28px -11px rgba(0, 0, 0, 0.49);
+    z-index: 4;
+}
+
+.plant2 {
+    height: 300px;
+    top: -218px;
+    left: 280px;
+}
+
+.leave2 {
+    transform: scale(1.2) rotate(-45deg);
+}
+
+.pot2 {
+    height: 150px;
+    border-radius: 15% 15% 25% 25% / 15% 15% 85% 85%;
+    background: linear-gradient(90deg, rgba(255, 145, 113, 0.56) 50%, rgb(207, 96, 72, 0.56) 50%), linear-gradient(0deg, rgba(255, 145, 113, 1) 70%, rgb(198, 91, 69, 1) 70%, rgb(198, 91, 69, 1) 87%, rgba(255, 153, 123, 1) 87%);
+}
+
+.pot2::before {
+    content: '';
+    background: rgb(255, 145, 113);
+    background: linear-gradient(90deg, rgba(255, 145, 113, 1) 50%, rgb(242, 130, 101) 50%);
+    width: 200px;
+    height: 30px;
+    position: absolute;
+    top: 0px;
+    left: -25px;
+    border-radius: 7% 7% 7% 7% / 80% 30% 30% 80%;
+}
+
+.plant3 {
+    height: 125px;
+    width: 70px;
+    top: -344px;
+    left: 457px;
+}
+
+.pot3 {
+    transform: scale(0.3, 0.4);
+    top: 19px;
+    left: -39px;
+    z-index: 0;
+}
+
+.stem {
+    width: 10px;
+    height: 100px;
+    background: rgb(166, 216, 174);
+    background: linear-gradient(90deg, rgba(166, 216, 174, 1) 10%, rgba(94, 189, 116, 1) 10%, rgba(98, 190, 119, 1) 90%, rgba(166, 216, 174, 1) 90%);
+    position: absolute;
+    top: -98px;
+    left: 70px;
+    z-index: 1;
+}
+
+.stem::before {
+    content: '';
+    background: rgb(98, 189, 116);
+    background: linear-gradient(-45deg, rgba(56, 114, 68, 1)50%, rgba(98, 189, 116, 1) 50%);
+    width: 85px;
+    height: 85px;
+    position: absolute;
+    top: -82px;
+    left: 0;
+    border-radius: 100% 0% 100% 0% / 100% 0% 100% 0%;
+    z-index: 2;
+}
+
+.stem::after {
+    content: '';
+    background: rgb(98, 189, 116);
+    background: linear-gradient(-45deg, rgba(56, 114, 68, 1)50%, rgba(98, 189, 116, 1) 50%);
+    width: 85px;
+    height: 85px;
+    position: absolute;
+    top: -26px;
+    left: -84px;
+    border-radius: 100% 0% 100% 0% / 100% 0% 100% 0%;
+    z-index: 2;
+    transform: rotate(-283deg);
+}
