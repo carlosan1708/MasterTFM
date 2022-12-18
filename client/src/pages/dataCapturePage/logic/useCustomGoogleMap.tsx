@@ -33,7 +33,6 @@ function useCustomGoogleMap(props:IUseCustomGoogleMap ) {
     if (response.status !== 200) {
       toast.success('Network response was not ok')
     }
-    alert(response.data)
     const imageBlob: Blob = await response.data;
     const element = document.createElement("a");
     element.href = URL.createObjectURL(imageBlob);

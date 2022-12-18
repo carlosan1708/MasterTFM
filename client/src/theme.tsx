@@ -9,6 +9,8 @@ let theme = createTheme({
             primary: '#77a69d',
             secondary: grey[50],
           },
+          info: {main: '#DFF5CE'},
+          success: {main: '#FFE77AFF'},
       },
       components: {
         MuiCssBaseline: {
