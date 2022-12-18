@@ -1,6 +1,8 @@
 
 Costa Rica, Solar Panel Detector
 
+https://costa-rica-solar.uc.r.appspot.com
+
 ## Goal:
 
 Main presentation layer , for software created for the detection of solar panels.
@@ -35,3 +37,7 @@ npm start
 ## Coming soon:
 - Metrics obtained during the Exercise.
 - Prediction capability using Google Map API and model for inference deployed in some server. 
+
+# React deployment
+https://www.codingdeft.com/posts/react-deploy-google-cloud-app-engine/
+

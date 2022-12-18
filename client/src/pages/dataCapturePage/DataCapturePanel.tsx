@@ -1,59 +1,87 @@
-import { Divider, Grid, TextField, Typography } from '@mui/material'
-import React, { useState } from 'react'
-import CustomGoogleMap from './CustomGoogleMap'
+import { Button, Divider, Grid, Paper, TextField, Typography, useMediaQuery, useTheme } from '@mui/material'
+import { useState } from 'react'
+import CustomGoogleMap from '../../component/CustomGoogleMap'
+import useCustomGoogleMap from './logic/useCustomGoogleMap';
 
 const DataCapturePanel = () => {
   const [nameSuffix, setNameSuffix] = useState('' as string);
   const [imageScale, setImageScale] = useState('19' as string);
-  const [apiKey, setApiKey] = useState('AIzaSyDC9oyvmBxke35n88ePtQeotnzC3wyQvhY' as string);
-
+  const { handleOnLoad, storeImage, setZoom } = useCustomGoogleMap({ nameSuffix, imageScale })
+  const theme = useTheme();
+  const matchesUp = useMediaQuery(theme.breakpoints.up('md'));
   return (
-    <Grid container>
-      <Grid item xs={2}>
-        <Grid container>
-          <Grid item xs={10}>
-            <Typography variant="h3">
-              Instructions
-            </Typography>
-            <Divider style={{marginBottom:'2rem'}}/>
-          </Grid>
-          <Grid item xs={10}>
-            <Typography>
-              The following tool will help you capture satellital images using Google API, with very basic steps:
-            </Typography>
-            <Typography component={'span'} >
-              <ul>
-                <li>Left Click to Zoom as the image that is going to get capture.</li>
-                <li>Right Click to Save the image.</li>
-              </ul>
-            </Typography>
-          </Grid>
-          <Grid item xs={10}style={{marginTop:'2rem'}}>
-          <Typography variant="h5">
-              Preferences (Optional)
-            </Typography>
-            <Divider style={{marginBottom:'2rem'}}/>
-          </Grid>
-          <Grid container item xs={10} >
-            <TextField value={apiKey} id="outlined-basic" label="API Key" variant="outlined" onChange={(e) => setApiKey(e.target.value)}/>
-            <Typography variant="subtitle2">
-               Important!: To download images you will need a Google API key with restriction enable for Google Map Static, this key will not be stored or sent to any database.
-            </Typography>
-          </Grid>
-          <Grid container item xs={10} >
-            <TextField value={nameSuffix} id="outlined-basic" label="Image suffix" variant="outlined" onChange={(e) => setNameSuffix(e.target.value)}/>
-            <Typography variant="subtitle2">
-               Note: By default, images will always have the coordinates at the beginning.
-            </Typography>
-          </Grid>
-          <Grid container item xs={10} style={{marginTop: '2rem'}}>
-            <TextField value={imageScale} type={'number'} id="outlined-basic" label="Zoom Scale" variant="outlined" onChange={(e) => setImageScale(e.target.value)}/>
+    <Grid container spacing={2} >
+       {matchesUp ?
+        <Grid item xs={2}>
+          <Grid container >
+
+            <Paper style={{padding: '1rem'}}>
+            <Grid item xs={10}>
+              <Typography variant="h5">
+                Instructions
+              </Typography>
+              <Divider style={{ marginBottom: '2rem' }} />
+            </Grid>
+            <Grid item xs={10}>
+              <Typography >
+                The following tool will help you capture satellital images using Google API, with very basic steps:
+              </Typography>
+              <Typography component={'span'} >
+                <ul>
+                  <li>Left Click to Zoom as the image that is going to get capture.</li>
+                  <li>Right Click to Save the image.</li>
+                </ul>
+              </Typography>
+            </Grid>
+            <Grid item xs={10} style={{ marginTop: '2rem' }}>
+              <Typography variant="h5">
+                Preferences (Optional)
+              </Typography>
+              <Divider style={{ marginBottom: '2rem' }} />
+            </Grid>
+
+            <Grid container item xs={10} >
+              <TextField value={nameSuffix} id="outlined-basic" label="Image suffix" variant="outlined" onChange={(e) => setNameSuffix(e.target.value)} />
+              <Typography variant="subtitle2">
+                Note: By default, images will always have the coordinates at the beginning.
+              </Typography>
+            </Grid>
+            <Grid container item xs={10} style={{ marginTop: '2rem' }}>
+              <TextField value={imageScale} type={'number'} id="outlined-basic" label="Zoom Scale" variant="outlined" onChange={(e) => setImageScale(e.target.value)} />
+            </Grid>
+            </Paper>
           </Grid>
         </Grid>
-      </Grid>
-      <Grid item xs={10}>
-        <CustomGoogleMap nameSuffix={nameSuffix} imageScale={imageScale} apiKey={apiKey}/>
-      </Grid>
+        : <>
+          This section is intented for PC.
+        </>}
+      {matchesUp ?
+        <Grid item xs={10}>
+          <CustomGoogleMap
+            handleOnLoad={handleOnLoad}
+            clickAction={setZoom}
+            rightClickAction={storeImage}
+            allActions={true}
+            imageScale={imageScale} />
+          <Button style={{ marginTop: '2rem', marginRight: '1rem' }} size="large" variant={'contained'} onClick={setZoom}>Default Zoom</Button>
+          <Button style={{ marginTop: '2rem' }} size="large" variant={'contained'} onClick={storeImage}>Download Image</Button>
+        </Grid> :
+        <Grid container item xs={12}>
+           <Grid  item xs={12}>
+          <CustomGoogleMap
+            handleOnLoad={handleOnLoad}
+            clickAction={setZoom}
+            rightClickAction={storeImage}
+            allActions={true}
+            imageScale={imageScale} />
+            </Grid>
+             <Grid container item xs={12}>
+            <Button style={{ marginTop: '2rem', marginRight: '1rem' }} size="large" variant={'contained'} onClick={setZoom}>Default Zoom</Button>
+            <Button style={{ marginTop: '3rem' }} size="large" variant={'contained'} onClick={storeImage}>Download Image</Button>
+            </Grid>
+        </Grid>
+      }
+     
     </Grid>
 
   )

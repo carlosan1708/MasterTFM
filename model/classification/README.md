@@ -2,9 +2,14 @@
 
 Please to execute run:
 
+Note: Something it's complicated to recognized GPU in windows , with docker is not. 
 python -m venv .venv 
+.venv\Scripts\activate  
 pip install -r docker/requirements.txt
+python train.py -d ./dataset_classification --epochs=100 --batch-size=2 --model-name=efficientnet_b0
+python predict.py
 
+bbcfad8a8aad2dcc383db09cec93effc082e2a8d
 
 Below instructions are from the original repository for which this code is based of
 
@@ -117,7 +122,7 @@ Simple implementation with everything in a single file ([train.py](./train.py))
 Specify the dataset root directory containing the `train` and `val` directories.
 
 ```
-python train.py -d ./dataset_classification
+python train.py -d ./dataset_classification --epochs=20
 ```
 
 #### Detailed settings by command line ([code link](https://github.com/karasawatakumi/pytorch-image-classification/blob/main/train.py#L32-L43)):

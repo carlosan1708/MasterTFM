@@ -4,17 +4,17 @@ from sklearn.metrics import accuracy_score
 import torchvision.transforms as transforms
 from torch.autograd import Variable
 data = SimpleData(
-        root_dir='solar_panel',
+        root_dir='dataset_classification',
         img_size=1280,
         batch_size=8,
         num_workers=16,
     )
 
 model = SimpleModel(
-        model_name='resnet18', pretrained=True, num_classes=2
+        model_name='resnet50', pretrained=True, num_classes=2
     )
 
-model.load_state_dict(torch.load('models/classification.pt'))
+model.load_state_dict(torch.load('models/classification12802resnet50.pt'))
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -38,27 +38,27 @@ def get_prediction(image_bytes):
     _, y_hat = outputs.max(1)
     return y_hat
 
-with open("./solar_panel/test/no_panel/img_9.863717617353693_-84.0662160684078.png", 'rb') as f:
+with open("./dataset_classification/test/no_panel/img_9.863717617353693_-84.0662160684078.png", 'rb') as f:
     image_bytes = f.read()
     result = get_prediction(image_bytes=image_bytes)
     print(result)
 
-with open("./solar_panel/test/panel/9.94572365023321,-84.17480666935484.png", 'rb') as f:
+with open("./dataset_classification/test/panel/9.94572365023321,-84.17480666935484.png", 'rb') as f:
     image_bytes = f.read()
     result = get_prediction(image_bytes=image_bytes)
     print(result)
 
-with open("./solar_panel/test/no_panel/img_9.868364518305727_-84.04025356859394.png", 'rb') as f:
+with open("./dataset_classification/test/no_panel/img_9.868364518305727_-84.04025356859394.png", 'rb') as f:
     image_bytes = f.read()
     result = get_prediction(image_bytes=image_bytes)
     print(result)
 
-with open("./solar_panel/test/panel/9.95727045052941,-84.11803941060914.png", 'rb') as f:
+with open("./dataset_classification/test/panel/9.95727045052941,-84.11803941060914.png", 'rb') as f:
     image_bytes = f.read()
     result = get_prediction(image_bytes=image_bytes)
     print(result)
 
-with open("./solar_panel/test/panel/9.99232906170785,-84.25629114294135.png", 'rb') as f:
+with open("./dataset_classification/test/panel/9.99232906170785,-84.25629114294135.png", 'rb') as f:
     image_bytes = f.read()
     result = get_prediction(image_bytes=image_bytes)
     print(result)

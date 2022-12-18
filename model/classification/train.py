@@ -308,13 +308,10 @@ if __name__ == '__main__':
         root_dir=args.dataset,
         img_size=args.img_size,
         batch_size=args.batch_size,
-        num_workers=14
+        num_workers=16
     )
    
-
-    special = "min_replace_max"
-
-    display_name = 'classification'+str(args.img_size)+str(args.batch_size)+special
+    display_name = 'classification'+str(args.img_size)+str(args.batch_size)+str(args.model_name)
     wandb_logger = WandbLogger(project="Classification-TFM",name=display_name)
 
     model = SimpleModel(

@@ -1,28 +1,31 @@
 
 
 
-Instructions: 
+Instructions for local execution: 
 
 Run App:
 python -m venv .venv
 .venv\Scripts\activate  
 pip install -r requirements.txt
-set FLASK_APP=costa_rica_solar_panel
+set FLASK_APP=classification
 set FLASK_ENV=development
 flask run
 
-https://medium.com/analytics-vidhya/deploying-pytorch-models-for-free-with-docker-aws-ecr-and-aws-lambda-b949646544c7
+Instructions to deploy docker files to GCP (Made for Cloud Run)
 
-https://medium.com/analytics-vidhya/deploying-pytorch-models-for-free-with-docker-aws-ecr-and-aws-lambda-b949646544c7
+Classification
 
+docker build -f Dockerfile.classification -t gcr.io/costa-rica-solar/solar-function_classification .
 
-aws ecr create-repository --repository-name costa_rica_solar --image-scanning-configuration scanOnPush=true --region us-east-1
+docker push gcr.io/costa-rica-solar/solar-function_classification
 
+Segmentation
 
-docker build -t gcr.io/costa-rica-solar/solar-function .
+docker build -f Dockerfile.segmentation -t gcr.io/costa-rica-solar/solar-function_segmentation .
 
-docker push gcr.io/costa-rica-solar/solar-function
+docker push gcr.io/costa-rica-solar/solar-function_segmentation
+
+References:
 
 https://cloud.google.com/deep-learning-vm/docs/pytorch_start_instance
-
 https://medium.datadriveninvestor.com/deploy-machine-learning-model-in-google-cloud-using-cloud-run-6ced8ba52aac
