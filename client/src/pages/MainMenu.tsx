@@ -10,11 +10,11 @@ import { Home } from './homePage/Home';
 import { Grid   } from '@mui/material';
 import DataCapturePanel from './dataCapturePage/DataCapturePanel';
 import Predictions from './predictionPage/Predictions';
-import Metrics from './Metrics';
+import Info from './Info';
 
 export default function ClippedDrawer() {
 
-  const pagesLinks = ['/', 'dataCapture', 'dataPrediction', 'dataMetrics'];
+  const pagesLinks = ['/', 'dataCapture', 'dataPrediction', 'info'];
 
   return (
     <>
@@ -32,7 +32,7 @@ export default function ClippedDrawer() {
         </Toolbar>
       </AppBar>
       <Grid container style={{marginTop: '6vh'}} spacing={2}>
-      <>{['Home', 'Capture', 'Prediction', 'Metrics'].map((text, index) => (
+      <>{['Home', 'Capture', 'Prediction', 'Info'].map((text, index) => (
         <Grid key={`${index}GridMainMenu`} item xs={3} sm={3}>
                 <ListItem key={text} disablePadding>
                   <ListItemButton dense selected={true}component={Link} to={`${pagesLinks[index]}`}>
@@ -51,7 +51,7 @@ export default function ClippedDrawer() {
               <Route path="/" element={<Home />} />
               <Route path="/dataCapture" element={<DataCapturePanel />} />
               <Route path="/dataPrediction" element={<Predictions />} />
-              <Route path="/dataMetrics" element={<Metrics />} />
+              <Route path="/info" element={<Info />} />
             </Routes>
           </Grid>
           </Grid>

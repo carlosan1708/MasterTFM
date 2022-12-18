@@ -1,10 +1,12 @@
-import { Grid, keyframes, Paper, styled, Typography, useMediaQuery, useTheme } from '@mui/material'
+import { Avatar, Grid, keyframes, Paper, styled, Typography, useMediaQuery, useTheme } from '@mui/material'
 import MapsHomeWorkIcon from '@mui/icons-material/MapsHomeWork';
 import OtherHousesIcon from '@mui/icons-material/OtherHouses';
 import VillaIcon from '@mui/icons-material/Villa';
 import HolidayVillageIcon from '@mui/icons-material/HolidayVillage';
 import HouseIcon from '@mui/icons-material/House';
 import './Plants.css';
+import peopleSolar from '../../images/peopleSolar.png';
+
 export const Home = () => {
 
   const theme = useTheme();
@@ -86,17 +88,31 @@ export const Home = () => {
               </Sun>
             </Grid>
           }
-          <Grid item xs={12} style={{ padding: '2rem', marginLeft: '2vw' }} >
-            <Paper style={{ padding: '3rem', backgroundColor: 'rgba(144, 202, 249, 0.16)' }} >
+          <Grid container justifyContent={'center'} alignItems={'center'}>
+          
+          <Grid container item xs={5} style={{ padding: '2rem'}} >
+            <Avatar variant={"rounded"} alt="The image" src={peopleSolar} style={{
+              width: '100%',
+              height: '100%',
+            }} />
+            <Typography fontSize={{
+                xs: 10
+              }} style={{ color: 'rgb(173, 230, 185)' }}  >
+                Image by rawpixel.com<br />
+              </Typography>
+          </Grid>
+          <Grid item xs={5} style={{ padding: '2rem', marginLeft: '2vw' }} >
+            <Paper elevation={24} style={{ padding: '3rem', backgroundColor: 'rgba(144, 202, 249, 0.16)' }} >
               <Typography fontSize={{
                 lg: 30,
                 md: 20,
                 sm: 15,
                 xs: 20
               }} style={{ color: 'rgb(173, 230, 185)' }} sx={{ fontWeight: 'bold' }} >
-                Welcome! To the machine learning tool made to facilate studies on usage of solar panels in Costa Rica <br />
+                 The machine learning tool was made to facilitate studies on the usage of solar panels in Costa Rica<br />
               </Typography>
             </Paper>
+          </Grid>
           </Grid>
           <Grid container style={{ marginTop: '3rem' }} spacing={1}>
             <>

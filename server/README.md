@@ -1,15 +1,16 @@
-
+# Application 
 
 
 Instructions for local execution: 
 
-Run App:
 python -m venv .venv
 .venv\Scripts\activate  
 pip install -r requirements.txt
-set FLASK_APP=classification
+set FLASK_APP=segmentation
 set FLASK_ENV=development
 flask run
+
+
 
 Instructions to deploy docker files to GCP (Made for Cloud Run)
 
