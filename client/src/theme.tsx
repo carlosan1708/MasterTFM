@@ -16,7 +16,7 @@ let theme = createTheme({
         MuiCssBaseline: {
           styleOverrides: {
             body: {
-              background: 'radial-gradient(circle, rgba(24,54,15,1) 0%, rgba(10,75,35,1) 100%);',
+              background: 'linear-gradient(90deg, rgba(24,54,15,1) 0%, rgba(67,116,104,1) 17%, rgba(28,96,54,1) 100%)',
               backgroundRepeat: "no-repeat",
               backgroundAttachment: "fixed",
             },

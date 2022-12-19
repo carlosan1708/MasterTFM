@@ -1,4 +1,4 @@
-import { Avatar, Grid, keyframes, Paper, styled, Typography, useMediaQuery, useTheme } from '@mui/material'
+import { Avatar, Grid, keyframes, styled, Typography, useMediaQuery, useTheme } from '@mui/material'
 import MapsHomeWorkIcon from '@mui/icons-material/MapsHomeWork';
 import OtherHousesIcon from '@mui/icons-material/OtherHouses';
 import VillaIcon from '@mui/icons-material/Villa';
@@ -40,7 +40,8 @@ export const Home = () => {
     animation: `${sunrise} 10s infinite ease`
   });
 
-  const matchesUp = useMediaQuery(theme.breakpoints.up('md'));
+  const matchesUpMd = useMediaQuery(theme.breakpoints.up('md'));
+  const matchesUpSm = useMediaQuery(theme.breakpoints.up('md'));
   const manyHouses = (length: number) => { return Array.from({ length: length }, (_, i) => i + 1) };
   const manyUrbanAreas = (length: number) => { return (Array.from({ length: length }, (_, i) => i + 1)) };
 
@@ -69,12 +70,12 @@ export const Home = () => {
     <Grid container spacing={3}>
       <Grid item xs={12} >
         <Grid container>
-          {matchesUp ?
+          {matchesUpMd &&
             <Grid container spacing={1}>
               <Sun >
               </Sun>
               <>
-                <>    {manyHouses(3).map((index) => {
+                <> {manyHouses(3).map((index) => {
                   return (
                     generateRandomIcons(index)
                   )
@@ -82,14 +83,9 @@ export const Home = () => {
 
               </>
             </Grid>
-            :
-            <Grid container spacing={1}>
-              <Sun >
-              </Sun>
-            </Grid>
           }
-          <Grid container justifyContent={'center'} alignItems={'center'}>
-            {matchesUp &&
+          <Grid container >
+            {matchesUpMd &&
               <Grid container item xs={5} sm={5} style={{ padding: '2rem' }} >
                 <Avatar variant={"rounded"} alt="The image" src={peopleSolar} style={{
                   width: '100%',
@@ -97,57 +93,64 @@ export const Home = () => {
                 }} />
                 <Typography fontSize={{
                   xs: 10
-                }} style={{ color: 'rgb(173, 230, 185)' }}  >
+                }} style={{ color: 'black' }}  >
                   Image by rawpixel.com<br />
                 </Typography>
               </Grid>
             }
-            <Grid item xs={12} sm={5} style={{ padding: '2rem', marginLeft: '2vw' }} >
-              <Paper elevation={24} style={{ padding: '3rem', backgroundColor: 'rgba(144, 202, 249, 0.16)' }} >
+
+            <Grid item xs={12} sm={6} style={{ padding: '2rem' }} >
+              <Grid
+                container
+                direction="column"
+                justifyContent="center"
+                alignItems="center"
+              >
                 <Typography fontSize={{
-                  lg: 30,
+                  lg: 60,
                   md: 20,
                   sm: 15,
                   xs: 20
-                }} style={{ color: 'rgb(173, 230, 185)' }} sx={{ fontWeight: 'bold' }} >
-                  The machine learning tool was made to facilitate studies on the usage of solar panels in Costa Rica<br />
+                }} fontFamily={'Segoe UI'} style={{ color: 'rgb(173, 230, 185)' }} sx={{ fontWeight: 'bold' }} >
+                  The machine learning tool that was made to facilitate studies on the usage of solar panels in Costa Rica<br />
                 </Typography>
-              </Paper>
+              </Grid>
             </Grid>
           </Grid>
+          {!matchesUpMd && <>
+            <Grid container>
+              <Sun >
+              </Sun>
+            </Grid>
+            <Grid container item xs={12} sm={5} style={{ padding: '2rem' }} >
+              <Avatar variant={"rounded"} alt="The image" src={peopleSolar} style={{
+                width: '100%',
+                height: '100%',
+              }} />
+              <Typography fontSize={{
+                xs: 10
+              }} style={{ color: 'rgb(173, 230, 185)' }}  >
+                Image by rawpixel.com<br />
+              </Typography>
+            </Grid>
+          </>
+          }
           <Grid container style={{ marginTop: '3rem' }} spacing={1}>
+            <Grid item xs={12}></Grid>
             <>
-              {!matchesUp ? <>  {manyHouses(10).map((index) => {
-                return (
-                  generateRandomIcons(index)
-                )
-              })} </> :
-                <>    {manyHouses(35).map((index) => {
+              {matchesUpSm &&
+                <>{manyHouses(20).map((index) => {
                   return (
                     generateRandomIcons(index)
                   )
                 })} </>}
             </>
+
           </Grid>
         </Grid>
       </Grid>
-      {matchesUp ?
+      {matchesUpMd &&
         <>
-          <div className="plants">
-            <div className="plant">
-              <div className="leave"></div>
-              <div className="pot"></div>
-            </div>
-            <div className="plant plant2">
-              <div className="leave leave2"></div>
-              <div className="pot pot2"></div>
-            </div>
-            <div className="plant plant3">
-              <div className="pot pot2 pot3">
-                <div className="stem"></div>
-              </div>
-            </div>
-          </div>
           <div className="plants">
             <div className="plant">
               <div className="leave"></div>
@@ -168,28 +171,8 @@ export const Home = () => {
               <div className="leave"></div>
               <div className="pot"></div>
             </div>
-            <div className="plant plant2">
-              <div className="leave leave2"></div>
-              <div className="pot pot2"></div>
-            </div>
-            <div className="plant plant3">
-              <div className="pot pot2 pot3">
-                <div className="stem"></div>
-              </div>
-            </div>
           </div>
-          <div className="plants3">
-            <div className="plant">
-              <div className="leave"></div>
-              <div className="pot"></div>
-            </div>
-          </div>
-        </> : <div className="plants3">
-          <div className="plant">
-            <div className="leave"></div>
-            <div className="pot"></div>
-          </div>
-        </div>
+        </>
       }
     </Grid>
 
