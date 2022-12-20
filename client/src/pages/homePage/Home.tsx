@@ -154,22 +154,31 @@ export const Home = () => {
           <div className="plants">
             <div className="plant">
               <div className="leave"></div>
-              <div className="pot"></div>
             </div>
             <div className="plant plant2">
               <div className="leave leave2"></div>
-              <div className="pot pot2"></div>
             </div>
             <div className="plant plant3">
-              <div className="pot pot2 pot3">
-                <div className="stem"></div>
-              </div>
             </div>
           </div>
           <div className="plants2">
-            <div className="plant">
+          <div className="plant">
               <div className="leave"></div>
-              <div className="pot"></div>
+            </div>
+            <div className="plant plant2">
+              <div className="leave leave2"></div>
+            </div>
+            <div className="plant plant3">
+            </div>
+          </div>
+          <div className="plants3">
+          <div className="plant">
+              <div className="leave"></div>
+            </div>
+            <div className="plant plant2">
+              <div className="leave leave2"></div>
+            </div>
+            <div className="plant plant3">
             </div>
           </div>
         </>

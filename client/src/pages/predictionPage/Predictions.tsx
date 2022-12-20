@@ -22,6 +22,14 @@ const Prediction = () => {
                 <Divider style={{ marginBottom: '2rem' }} />
               </Grid>
               <Grid item xs={10}>
+              <Typography variant='h6' style={{ color: 'rgb(173, 230, 185)' }}>
+                  Important! You can move the map and execute new predictions, move the map by holding down the left click and drag the map to a desire location
+                </Typography>
+                <br/>
+                <Typography variant='body1' style={{ color: 'rgb(173, 230, 185)' }}>
+                   If the area doesn't contain a solar panel, the prediction is not going to execute
+                </Typography>
+                <br/>
                 <Typography>
                   The following tool will help you predict satellital images using Google API, and two machine learning models:
                 </Typography>
@@ -39,7 +47,7 @@ const Prediction = () => {
                 <Divider style={{ marginBottom: '2rem' }} />
               </Grid>
               <Grid container item xs={10} >
-                Zoom Scale is disabled, you can click to adjust to the scale where the prediction is going to operate
+                Zoom Scale is disabled
               </Grid>
               <Grid container item xs={10} style={{ marginTop: '2rem' }}>
                 <TextField disabled value={imageScale} type={'number'} id="outlined-basic" label="Zoom Scale" variant="outlined" onChange={(e) => setImageScale(e.target.value)} />
@@ -48,9 +56,11 @@ const Prediction = () => {
           </Paper>
         </Grid>
         :
+        <Paper style={{ padding: '1rem' }}>
         <Typography variant="subtitle2" style={{ marginLeft: '1rem' }}>
-          Use PC to get more instructions
+          Use PC to get more instructions, you can move the map and execute new predictions, if the area doesn't contain a solar panel, the prediction is not going to execute
         </Typography>
+        </Paper>
       }
       <Grid container item xs={10}>
         <Grid container item xs={12} sm={5}>
@@ -67,7 +77,7 @@ const Prediction = () => {
             <Button style={{ marginTop: '2rem', marginRight: '1rem' }} size="large" color="info" variant={'contained'} onClick={setZoom}>Zoom</Button>
             </Grid>
             <Grid item xs={6}>
-            <Button style={{ marginTop: '2rem' }} size="large" variant={'contained'} color="success" onClick={generatePrediction}>Prediction</Button>
+            <Button style={{ marginTop: '2rem' }} size="large" variant={'contained'} color="success" onClick={generatePrediction}>Predict</Button>
             </Grid>
           </Grid>
         </Grid>
@@ -79,12 +89,12 @@ const Prediction = () => {
       
           {matchesUp ? 
           <>    {segmentationImage &&
-            <img style={{width: '100%', height: '100%'}} src={`data:image/jpeg;base64,${segmentationImage}`} alt="predictionImage" />
+            <img style={{width: '80%', height: '80%'}} src={`data:image/jpeg;base64,${segmentationImage}`} alt="predictionImage" />
           } </>
           :
             <>
                 {segmentationImage &&
-            <img style={{marginTop: '2rem', width: '100%', height: '100%'}} src={`data:image/jpeg;base64,${segmentationImage}`} alt="predictionImage" />
+            <img style={{marginTop: '2rem', width: '80%', height: '80%'}} src={`data:image/jpeg;base64,${segmentationImage}`} alt="predictionImage" />
           }
           </>
           }
