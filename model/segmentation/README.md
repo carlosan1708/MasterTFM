@@ -8,7 +8,7 @@ Installation
 ```
 python -m venv .venv 
 .venv\Scripts\activate  
-pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu116!
+pip install torch==1.9.0 torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu116!
 pip install -r requirements.txt
 ```
 

@@ -89,7 +89,7 @@ const Prediction = () => {
       
           {matchesUp ? 
           <>    {segmentationImage &&
-            <img style={{width: '80%', height: '80%'}} src={`data:image/jpeg;base64,${segmentationImage}`} alt="predictionImage" />
+            <img style={{width: '100%', height: '70%'}} src={`data:image/jpeg;base64,${segmentationImage}`} alt="predictionImage" />
           } </>
           :
             <>
