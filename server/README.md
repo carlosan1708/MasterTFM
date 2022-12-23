@@ -11,8 +11,11 @@ set FLASK_ENV=development
 flask run
 
 
-
 Instructions to deploy docker files to GCP (Made for Cloud Run)
+
+Requisites:
+
+Docker installation. 
 
 Classification
 
