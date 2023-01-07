@@ -16,19 +16,22 @@ React / Typescript / Material UI
 
 Environment enable to run node js scrips. 
 
-
 ## Installation:
 
-npm install
+`npm install`
 
 ## Execution:
 
-npm start
-
+`npm start`
 ## Important:
 
 API KEY present will not work in a local environment, it's tied to the domain for security reasons. 
 
+## Deployment:
+
+Note!!: Only after you follow the steps to configure a pipeline.
+
+`gcloud app deploy`
 ## Content:
 
 - Tool to capture satellelite images, using Google Maps API. 
