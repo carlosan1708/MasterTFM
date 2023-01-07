@@ -10,15 +10,12 @@ Main presentation layer , for software created for the detection of solar panels
 
 ## Stack:
 
-React & Typescript
+React / Typescript / Material UI
 
 ## Requisite: 
 
 Environment enable to run node js scrips. 
 
-Recommended Link if it's the first time: 
-
-https://beta.reactjs.org/learn/start-a-new-react-project
 
 ## Installation:
 
@@ -27,6 +24,10 @@ npm install
 ## Execution:
 
 npm start
+
+## Important:
+
+API KEY present will not work in a local environment, it's tied to the domain for security reasons. 
 
 ## Content:
 

@@ -7,28 +7,75 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { Routes, Route, Link } from "react-router-dom";
 import { Home } from './homePage/Home';
-import { Grid } from '@mui/material';
+import { Box, Grid, IconButton } from '@mui/material';
 import DataCapturePanel from './dataCapturePage/DataCapturePanel';
 import Predictions from './predictionPage/Predictions';
-import Info from './Info';
+import Info from './infoPage/Info';
+import React from 'react';
+
+export const LanguageContext = React.createContext({});
 
 export default function ClippedDrawer() {
-
   const pagesLinks = ['/', 'dataCapture', 'dataPrediction', 'info'];
+
+  const [mode, setMode] = React.useState<'english' | 'spanish'>('english');
+  const languageMode = React.useMemo(
+    () => ({
+      toggleLanguageMode: () => {
+        setMode((prevMode) => (prevMode === 'english' ? 'spanish' : 'english'));
+      },
+    }),
+    [],
+  );
 
   return (
     <>
       <CssBaseline />
       <AppBar position="fixed" sx={{ background: '#faf3dd' }}>
-        <Toolbar disableGutters={true} >
+        <Toolbar disableGutters >
+
           <Typography style={{ color: '#476930' }} fontSize={{
             lg: 40,
             md: 20,
             sm: 15,
-            xs: 20
-          }} fontFamily={'Segoe UI'} sx={{ fontWeight: 'bold' }} noWrap component="div">
+            xs: 15
+          }} fontFamily={'Segoe UI'} sx={{ flexGrow: 1, display: { xs: 'block', sm: 'block' }, fontWeight: 'bold' }} noWrap component="div">
             Costa Rica, Solar Panel Detector
           </Typography>
+          <Box sx={{ display: { xs: 'block', sm: 'block' } }}>
+            <IconButton sx={{ ml: 1 }} onClick={languageMode.toggleLanguageMode} color="inherit">
+              {mode === 'english' ? <Typography
+                fontSize={{
+                  lg: 25,
+                  md: 15,
+                  sm: 15,
+                  xs: 10
+                }}
+                style={{ color: 'blue' }}>{'English'}</Typography> : <Typography
+                  fontSize={{
+                    lg: 25,
+                    md: 15,
+                    sm: 15,
+                    xs: 10
+                  }}
+                  style={{ color: '#476930' }}>{'English'}</Typography>}
+            </IconButton>
+            <IconButton sx={{ ml: 1 }} onClick={languageMode.toggleLanguageMode} color="inherit">
+              {mode === 'spanish' ? <Typography fontSize={{
+                lg: 25,
+                md: 15,
+                sm: 15,
+                xs: 10
+              }}
+                style={{ color: 'blue' }}>{'Spanish'}</Typography> : <Typography fontSize={{
+                  lg: 25,
+                  md: 15,
+                  sm: 15,
+                  xs: 10
+                }}
+                  style={{ color: '#476930' }}>{'Spanish'}</Typography>}
+            </IconButton>
+          </Box>
         </Toolbar>
       </AppBar>
       <Grid container style={{ marginTop: '5vh' }} spacing={2}>
@@ -47,12 +94,14 @@ export default function ClippedDrawer() {
           </Grid>
         ))}</>
         <Grid item xs={12} >
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/dataCapture" element={<DataCapturePanel />} />
-            <Route path="/dataPrediction" element={<Predictions />} />
-            <Route path="/info" element={<Info />} />
-          </Routes>
+          <LanguageContext.Provider value={mode}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/dataCapture" element={<DataCapturePanel />} />
+              <Route path="/dataPrediction" element={<Predictions />} />
+              <Route path="/info" element={<Info />} />
+            </Routes>
+          </LanguageContext.Provider>
         </Grid>
       </Grid>
 

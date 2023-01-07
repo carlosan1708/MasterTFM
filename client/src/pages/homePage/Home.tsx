@@ -6,6 +6,8 @@ import HolidayVillageIcon from '@mui/icons-material/HolidayVillage';
 import HouseIcon from '@mui/icons-material/House';
 import './Plants.css';
 import peopleSolar from '../../images/peopleSolar.png';
+import { LanguageContext } from '../MainMenu';
+import { useContext } from 'react';
 
 export const Home = () => {
 
@@ -47,6 +49,8 @@ export const Home = () => {
 
   const randomNumber = () => { return Math.floor(Math.random() * 10) };
 
+  const language = useContext(LanguageContext);
+
   const houses = [<MapsHomeWorkIcon fontSize="large" />,
   <VillaIcon fontSize="large" />,
   <HouseIcon fontSize="large" />,
@@ -75,7 +79,7 @@ export const Home = () => {
               <Sun >
               </Sun>
               <>
-                <> {manyHouses(3).map((index) => {
+                <> {manyHouses(2).map((index) => {
                   return (
                     generateRandomIcons(index)
                   )
@@ -109,10 +113,18 @@ export const Home = () => {
                 <Typography fontSize={{
                   lg: 60,
                   md: 20,
-                  sm: 15,
+                  sm: 20,
                   xs: 20
                 }} fontFamily={'Segoe UI'} style={{ color: 'rgb(173, 230, 185)' }} sx={{ fontWeight: 'bold' }} >
-                  The machine learning tool that was made to facilitate studies on the usage of solar panels in Costa Rica<br />
+                  {
+                    language === 'english' ?
+                      <>
+                        The machine learning tool that was made to facilitate studies on the usage of solar panels in Costa Rica<br />
+                      </> :
+                      <>
+                        La herramienta de machine learning que facilita  estudios en el uso de paneles solares
+                      </>
+                  }
                 </Typography>
               </Grid>
             </Grid>
@@ -162,7 +174,7 @@ export const Home = () => {
             </div>
           </div>
           <div className="plants2">
-          <div className="plant">
+            <div className="plant">
               <div className="leave"></div>
             </div>
             <div className="plant plant2">
@@ -172,7 +184,7 @@ export const Home = () => {
             </div>
           </div>
           <div className="plants3">
-          <div className="plant">
+            <div className="plant">
               <div className="leave"></div>
             </div>
             <div className="plant plant2">

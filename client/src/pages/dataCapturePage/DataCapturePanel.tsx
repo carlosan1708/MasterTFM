@@ -1,6 +1,7 @@
 import { Button, Divider, Grid, Paper, TextField, Typography, useMediaQuery, useTheme } from '@mui/material'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import CustomGoogleMap from '../../component/CustomGoogleMap'
+import { LanguageContext } from '../MainMenu';
 import useCustomGoogleMap from './logic/useCustomGoogleMap';
 
 const DataCapturePanel = () => {
@@ -9,6 +10,8 @@ const DataCapturePanel = () => {
   const { handleOnLoad, storeImage, setZoom } = useCustomGoogleMap({ nameSuffix, imageScale })
   const theme = useTheme();
   const matchesUp = useMediaQuery(theme.breakpoints.up('md'));
+  const language = useContext(LanguageContext);
+
   return (
     <Grid container spacing={2} >
       {matchesUp ?
@@ -23,19 +26,55 @@ const DataCapturePanel = () => {
                 <Divider style={{ marginBottom: '2rem' }} />
               </Grid>
               <Grid item xs={10}>
+                <Typography variant='h6' style={{ color: 'rgb(173, 230, 185)' }}>
+                  {
+                    language === 'english' ?
+                      <>
+                        Important! You can move the map, move the map by holding down the left click and drag the map to a desire location
+                      </> : <>
+                        ¡Importante! Puedes mover el mapa, mueva el mapa manteniendo presionado el botón izquierdo y arrastre el mapa a la ubicación deseada
+                      </>
+                  }
+                </Typography>
+                <br />
                 <Typography >
-                  The following tool will help you capture satellital images using Google API, with very basic steps:
+                  {
+                    language === 'english' ?
+                      <>
+                        The following tool will help you capture satellite images using Google API, with very basic steps:
+                      </> : <>
+                        La siguiente herramienta te ayudará a capturar imágenes satelitales usando la API de Google, con pasos muy básicos:
+                      </>
+                  }
+
                 </Typography>
                 <Typography component={'span'} >
-                  <ul>
-                    <li>Left Click to Zoom as the image that is going to get capture.</li>
-                    <li>Right Click to Save the image.</li>
-                  </ul>
+                  {
+                    language === 'english' ?
+                      <>
+                        <ul>
+                          <li>Left Click, to return to the prediction zoom scale</li>
+                          <li>Right Click to Save the image.</li>
+                        </ul>
+                      </> : <>
+                        <ul>
+                          <li>Haga clic con el botón izquierdo para volver a la escala de zoom de predicción</li>
+                          <li>Haga clic derecho para guardar la imagen.</li>
+                        </ul>
+                      </>
+                  }
                 </Typography>
               </Grid>
               <Grid item xs={10} style={{ marginTop: '2rem' }}>
                 <Typography variant="h5">
-                  Preferences (Optional)
+                  {
+                    language === 'english' ?
+                      <>
+                        Preferences (Optional)
+                      </> : <>
+                        Preferencias (Opcional)
+                      </>
+                  }
                 </Typography>
                 <Divider style={{ marginBottom: '2rem' }} />
               </Grid>
@@ -43,7 +82,14 @@ const DataCapturePanel = () => {
               <Grid container item xs={10} >
                 <TextField value={nameSuffix} id="outlined-basic" label="Image suffix" variant="outlined" onChange={(e) => setNameSuffix(e.target.value)} />
                 <Typography variant="subtitle2">
-                  Note: By default, images will always have the coordinates at the beginning.
+                  {
+                    language === 'english' ?
+                      <>
+                        Note: By default, images will always have the coordinates as part of the name
+                      </> : <>
+                        Nota: Por defecto, las imágenes siempre tendrán las coordenadas como parte del nombre
+                      </>
+                  }
                 </Typography>
               </Grid>
               <Grid container item xs={10} style={{ marginTop: '2rem' }}>
@@ -54,7 +100,14 @@ const DataCapturePanel = () => {
         </Grid>
         : <>
           <Typography variant="subtitle2" style={{ marginLeft: '1rem' }}>
-            This section is intented for PC.
+            {
+              language === 'english' ?
+                <>
+                  This section is intented to be use in a computer.
+                </> : <>
+                  Esta sección está diseñada para ser utilizada en una computadora.
+                </>
+            }
           </Typography>
 
         </>}
@@ -79,11 +132,11 @@ const DataCapturePanel = () => {
               imageScale={imageScale} />
           </Grid>
           <Grid container item xs={12}>
-          <Grid item xs={6}>
-            <Button style={{ marginTop: '2rem', marginRight: '1rem' }} size="large" color="info" variant={'contained'} onClick={setZoom}>Zoom</Button>
+            <Grid item xs={6}>
+              <Button style={{ marginTop: '2rem', marginRight: '1rem' }} size="large" color="info" variant={'contained'} onClick={setZoom}>Zoom</Button>
             </Grid>
             <Grid item xs={6}>
-            <Button style={{ marginTop: '2rem' }} size="large" variant={'contained'} color="success" onClick={storeImage}>Save Image</Button>
+              <Button style={{ marginTop: '2rem' }} size="large" variant={'contained'} color="success" onClick={storeImage}>Save Image</Button>
             </Grid>
           </Grid>
         </Grid>
