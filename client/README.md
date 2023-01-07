@@ -27,6 +27,10 @@ Environment enable to run node js scrips.
 
 API KEY present will not work in a local environment, it's tied to the domain for security reasons. 
 
+## Installation:
+
+`npm run build`
+
 ## Deployment:
 
 Note!!: Only after you follow the steps to configure a pipeline.
