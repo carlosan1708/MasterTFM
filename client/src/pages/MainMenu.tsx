@@ -78,7 +78,7 @@ export default function ClippedDrawer() {
                 sm: 15,
                 xs: 10
               }}
-                style={{ color: 'pink' }}>{'Spanish'}</Typography> : <Typography fontSize={{
+                style={{ color: 'blue' }}>{'Spanish'}</Typography> : <Typography fontSize={{
                   lg: 25,
                   md: 15,
                   sm: 15,
