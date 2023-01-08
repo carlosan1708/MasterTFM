@@ -1,8 +1,12 @@
-# Model Workspace
+# Costa Rica Solar Panel Segmentation.
 
 Contents:
 
-- data_explorer.ipynb
+- data_explorer.ipynb: Simple utility to verify images, mainly used to explore transformations.
+- segmentation_inference.ipynb: Sample notebook to test inference of models.
+- segmentation_model.ipynb: Main notebook for training of segmentation model.
+- 
+
 
 Installation
 ```

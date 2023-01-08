@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useLocation } from "react-router-dom";
 import { Home } from './homePage/Home';
 import { Box, Grid, IconButton } from '@mui/material';
 import DataCapturePanel from './dataCapturePage/DataCapturePanel';
@@ -19,6 +19,10 @@ export default function ClippedDrawer() {
   const pagesLinks = ['/', 'dataCapture', 'dataPrediction', 'info'];
 
   const [mode, setMode] = React.useState<'english' | 'spanish'>('english');
+  const location = useLocation()
+
+
+
   const languageMode = React.useMemo(
     () => ({
       toggleLanguageMode: () => {
@@ -28,6 +32,13 @@ export default function ClippedDrawer() {
     [],
   );
 
+  const listBasedLanguage = () =>{
+    if(mode === 'english'){
+      return ['Home', 'Capture', 'Prediction', 'Info']
+    }else{
+      return ['Principal', 'Captura', 'Prediccion', 'Info']
+    }
+  }
   return (
     <>
       <CssBaseline />
@@ -67,7 +78,7 @@ export default function ClippedDrawer() {
                 sm: 15,
                 xs: 10
               }}
-                style={{ color: 'blue' }}>{'Spanish'}</Typography> : <Typography fontSize={{
+                style={{ color: 'pink' }}>{'Spanish'}</Typography> : <Typography fontSize={{
                   lg: 25,
                   md: 15,
                   sm: 15,
@@ -79,17 +90,34 @@ export default function ClippedDrawer() {
         </Toolbar>
       </AppBar>
       <Grid container style={{ marginTop: '5vh' }} spacing={2}>
-        <>{['Home', 'Capture', 'Prediction', 'Info'].map((text, index) => (
+        <>{listBasedLanguage().map((text, index) => (
           <Grid key={`${index}GridMainMenu`} item xs={3} sm={3}>
-            <ListItem key={text} disablePadding>
-              <ListItemButton alignItems={'center'} selected={true} component={Link} to={`${pagesLinks[index]}`}>
-                <ListItemText primary={<Typography fontSize={{
-                  lg: 30,
-                  md: 10,
-                  sm: 7,
-                  xs: 15
-                }} style={{ color: '#faf3dd' }} fontFamily={'Segoe UI'} sx={{ fontWeight: 'bold' }} align={'center'}>{text}</Typography>} />
+            <ListItem key={text} disablePadding >
+            
+            {(location.pathname === '/' && index ===0)
+                || location.pathname.substring(1).includes(pagesLinks[index]) ?
+              <ListItemButton style={{backgroundColor:'#faf3dd' }} alignItems={'center'} selected={true} component={Link} to={`${pagesLinks[index]}`}>
+                  <ListItemText primary={<Typography fontSize={{
+                    lg: 30,
+                    md: 10,
+                    sm: 7,
+                    xs: 15
+                  }} style={{ color: '#476930' }} fontFamily={'Segoe UI'} sx={{ fontWeight: 'bold' }} align={'center'}>
+                    {text}
+                  </Typography>} />
+                  </ListItemButton>
+                  :
+                  <ListItemButton alignItems={'center'} selected={true} component={Link} to={`${pagesLinks[index]}`}>
+                  <ListItemText primary={<Typography fontSize={{
+                    lg: 30,
+                    md: 10,
+                    sm: 7,
+                    xs: 15
+                  }} style={{ color: '#faf3dd' }} fontFamily={'Segoe UI'} sx={{ fontWeight: 'bold' }} align={'center'}>
+                    {text}
+                  </Typography>} />
               </ListItemButton>
+               }
             </ListItem>
           </Grid>
         ))}</>
