@@ -188,7 +188,7 @@ server/test/**
 server/model/**
 
 experiments/**
-*.png
+gif/**
 **/wandb/**
 **/lightning_logs/**
 **/models/**
