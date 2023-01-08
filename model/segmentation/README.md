@@ -5,7 +5,9 @@ Contents:
 - data_explorer.ipynb: Simple utility to verify images, mainly used to explore transformations.
 - segmentation_inference.ipynb: Sample notebook to test inference of models.
 - segmentation_model.ipynb: Main notebook for training of segmentation model.
-- 
+- sagemaker_scripts:
+  - download.ipynb: Simple command to move from S3 to Sagemaker notebook the images generated.
+  - extract_parse_images: Notebook that was used to extract the mask from the uncommon folder structure that Sagemaker Ground Truth uses. 
 
 
 Installation
