@@ -4,6 +4,14 @@
 
 This repository contains the code for a master's degree final project. 
 
+## URL
+
+https://costa-rica-solar.uc.r.appspot.com
+
+## Website Preview
+![Architecture](./website_gif.gif)
+
+
 ## Architecture.
 ![Architecture](./Architecture.png)
 
