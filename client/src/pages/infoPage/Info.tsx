@@ -21,7 +21,7 @@ const Info = () => {
             md: 20,
             sm: 15,
             xs: 20
-          }} fontFamily={'Segoe UI'} style={{ color: 'rgb(173, 230, 185)' }} sx={{ fontWeight: 'bold' }} >
+          }} style={{ color: 'rgb(173, 230, 185)' }} sx={{ fontWeight: 'bold' }} >
             {
               language === 'english' ?
                 <>
@@ -48,7 +48,7 @@ const Info = () => {
             md: 20,
             sm: 15,
             xs: 20
-          }} fontFamily={'Segoe UI'} style={{ color: 'rgb(173, 230, 185)' }} sx={{ fontWeight: 'bold' }} >
+          }}  style={{ color: 'rgb(173, 230, 185)' }} sx={{ fontWeight: 'bold' }} >
             {
               language === 'english' ?
                 <>

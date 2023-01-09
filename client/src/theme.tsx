@@ -2,6 +2,18 @@ import {  grey } from '@mui/material/colors';
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 
 let theme = createTheme({
+  typography: {
+    fontFamily: [
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
+  },
     palette: {
         mode: 'dark',
           divider: grey[200],

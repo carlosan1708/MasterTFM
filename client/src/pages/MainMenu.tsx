@@ -44,13 +44,12 @@ export default function ClippedDrawer() {
       <CssBaseline />
       <AppBar position="fixed" sx={{ background: '#faf3dd' }}>
         <Toolbar disableGutters >
-
           <Typography style={{ color: '#476930' }} fontSize={{
             lg: 40,
             md: 20,
             sm: 15,
             xs: 15
-          }} fontFamily={'Segoe UI'} sx={{ flexGrow: 1, display: { xs: 'block', sm: 'block' }, fontWeight: 'bold' }} noWrap component="div">
+          }} sx={{ flexGrow: 1, display: { xs: 'block', sm: 'block' }, fontWeight: 'bold' }} noWrap component="div">
             Costa Rica, Solar Panel Detector
           </Typography>
           <Box sx={{ display: { xs: 'block', sm: 'block' } }}>
@@ -102,7 +101,7 @@ export default function ClippedDrawer() {
                     md: 10,
                     sm: 7,
                     xs: 15
-                  }} style={{ color: '#476930' }} fontFamily={'Segoe UI'} sx={{ fontWeight: 'bold' }} align={'center'}>
+                  }} style={{ color: '#476930' }}  sx={{ fontWeight: 'bold' }} align={'center'}>
                     {text}
                   </Typography>} />
                   </ListItemButton>
@@ -113,7 +112,7 @@ export default function ClippedDrawer() {
                     md: 10,
                     sm: 7,
                     xs: 15
-                  }} style={{ color: '#faf3dd' }} fontFamily={'Segoe UI'} sx={{ fontWeight: 'bold' }} align={'center'}>
+                  }} style={{ color: '#faf3dd' }}  sx={{ fontWeight: 'bold' }} align={'center'}>
                     {text}
                   </Typography>} />
               </ListItemButton>
