@@ -103,9 +103,41 @@ export const GeneralInfo = (props: { language: string }) => {
         <Grid item sm={1} xs={12}>
 
         </Grid>
-        <Grid container item sm={3} xs={12}>
-          <Card sx={{ display: 'flex', width: '100%', height: '20vh' }}>
-            <Grid item xs={6} >
+        <Grid container item sm={3} xs={12} direction="column">
+        <Grid item xs={3} >
+              <CardContent >
+                <Typography fontSize={{
+                  lg: 30,
+                  md: 20,
+                  sm: 15,
+                  xs: 20
+                }}  style={{ color: 'rgb(173, 230, 185)' }} sx={{ fontWeight: 'bold' }} >
+                  {
+                    language === 'english' ?
+                      <>
+                        Credits</> :
+                      <>
+                        Creditos</>
+                  }
+                </Typography>
+                <br></br>
+                <Typography fontSize={{
+                  lg: 20,
+                  md: 10,
+                  sm: 7,
+                  xs: 5
+                }} color="text.secondary">
+                   {
+                    language === 'english' ?
+                      <>
+                      Guidance: Dr. Carlos Gaitan Potayos, Spain </> :
+                      <>
+                      Direccion: Dr. Carlos Gaitan Potayos, Spain </>
+                  }
+                </Typography>
+              </CardContent>
+            </Grid>
+            <Grid item xs={3} >
               <CardContent >
                 <Typography fontSize={{
                   lg: 30,
@@ -121,17 +153,12 @@ export const GeneralInfo = (props: { language: string }) => {
                         Codigo Fuente</>
                   }
                 </Typography>
-
               </CardContent>
-
               <CardActions>
                 <Button variant={'contained'} target="_blank" href="https://github.com/carlosan1708/MasterTFM">Github Repository</Button>
               </CardActions>
             </Grid>
-            <Grid item xs={6}>
-
-            </Grid>
-          </Card>
+        
         </Grid>
         <Grid container item sm={4} xs={12}>
           <Card sx={{ display: 'flex', width: '100%', height: '20vh' }}>
@@ -151,8 +178,17 @@ export const GeneralInfo = (props: { language: string }) => {
                         Autor</>
                   }
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Carlos Andres Rodriguez Trigueros, Sr Full Stack Developer
+                <Typography fontSize={{
+                  lg: 20,
+                  md: 10,
+                  sm: 7,
+                  xs: 5
+                }} color="text.secondary">
+                   Carlos Andres Rodriguez Trigueros
+                   <br></br>
+                  Sr Full Stack Developer
+                  <br></br>
+                   Costa Rica
                 </Typography>
 
               </CardContent>
