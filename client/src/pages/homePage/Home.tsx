@@ -1,200 +1,197 @@
-import { Avatar, Grid, keyframes, styled, Typography, useMediaQuery, useTheme } from '@mui/material'
-import MapsHomeWorkIcon from '@mui/icons-material/MapsHomeWork';
-import OtherHousesIcon from '@mui/icons-material/OtherHouses';
-import VillaIcon from '@mui/icons-material/Villa';
-import HolidayVillageIcon from '@mui/icons-material/HolidayVillage';
-import HouseIcon from '@mui/icons-material/House';
-import './Plants.css';
-import peopleSolar from '../../images/peopleSolar.png';
+import { Button, Grid, Paper, Typography } from '@mui/material'
+
 import { LanguageContext } from '../MainMenu';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
+import background from '../../images/background2.jpg'; // Import using relative path
+import { useNavigate } from 'react-router-dom';
+import PlayCircleIcon from '@mui/icons-material/PlayCircle';
+import { useSpring, animated } from '@react-spring/web'
+
 
 export const Home = () => {
 
-  const theme = useTheme();
-
-  const sunrise = keyframes`
-  0% {
-    transform: translate(-100vw, -20vh);
-  }
-  25% {
-    transform: translate(2vw, 10vh );
-  }
-  50% {
-    transform: translate(10vw, 5vh );
-  }
-  75% {
-    transform: translate(70vw, -5vh);
-  }
-  90% {
-    transform: translate(90vw, -5vh);
-  }
-  100% {
-    transform: translate(200vw, 1vh);
-  }
-  `;
-
-  const Sun = styled("div")({
-    backgroundImage: 'linear-gradient(to right, #f6d365 0%, #fda085 51%, #f6d365 100%)',
-    borderRadius: '50%',
-    height: '50px',
-    width: '50px',
-    animation: `${sunrise} 10s infinite ease`
-  });
-
-  const matchesUpMd = useMediaQuery(theme.breakpoints.up('md'));
-  const matchesUpSm = useMediaQuery(theme.breakpoints.up('md'));
-  const manyHouses = (length: number) => { return Array.from({ length: length }, (_, i) => i + 1) };
-  const manyUrbanAreas = (length: number) => { return (Array.from({ length: length }, (_, i) => i + 1)) };
-
-  const randomNumber = () => { return Math.floor(Math.random() * 10) };
-
   const language = useContext(LanguageContext);
 
-  const houses = [<MapsHomeWorkIcon fontSize="large" />,
-  <VillaIcon fontSize="large" />,
-  <HouseIcon fontSize="large" />,
-  <OtherHousesIcon fontSize="large" />,
-  <HolidayVillageIcon fontSize="large" />,
-  ]
-  const generateRandomIcons = (index: number) => {
-    return (
-      <Grid item xs={1} key={`${index}M0`}>
-        <>
-          {manyUrbanAreas(randomNumber()).map(() => {
-            return (<> {houses[randomNumber()]} </>)
-          })}
 
-        </>
-      </Grid>
-    )
+
+  const navigate = useNavigate()
+  const [displayBox1, setDisplayBox1] = useState(false);
+  const [displayBox2, setDisplayBox2] = useState(false);
+  const [displayBox3, setDisplayBox3] = useState(false);
+  const [displayBox4, setDisplayBox4] = useState(false);
+
+  setTimeout(() => {
+    setDisplayBox1(true);
+  }, 1000);
+  setTimeout(() => {
+    setDisplayBox2(true);
+  }, 3000);
+  setTimeout(() => {
+    setDisplayBox3(true);
+  }, 5000);
+
+  setTimeout(() => {
+    setDisplayBox4(true);
+  }, 7000);
+
+  const fadeProps1 = useSpring({
+    from: { opacity: 0, transform: 'translateX(-20%)' },
+    to: {
+      opacity: displayBox1 ? 1 : 0,
+      transform: displayBox1 ? 'translateX(0%)' : 'translateX(-100%)',
+    },
+    config: { duration: 2000 },
+  });
+
+  const fadeProps2 = useSpring({
+    from: { opacity: 0, transform: 'translateX(-20%)' },
+    to: {
+      opacity: displayBox2 ? 1 : 0,
+      transform: displayBox2 ? 'translateX(0%)' : 'translateX(-100%)',
+    },
+    config: { duration: 2000 },
+  });
+
+  const fadeProps3 = useSpring({
+    from: { opacity: 0, transform: 'translateX(-20%)' },
+    to: {
+      opacity: displayBox3 ? 1 : 0,
+      transform: displayBox3 ? 'translateX(0%)' : 'translateX(-100%)',
+    },
+    config: { duration: 2000 },
+  });
+
+  const fadeProps4 = useSpring({
+    from: { opacity: 0,transform: 'translateY(100%)' },
+    to: {
+      opacity: displayBox4 ? 1 : 0,
+      transform: displayBox4 ? 'translateY(0%)' : 'translateY(100%)',
+    },
+    config: { duration: 3000 },
+  });
+
+  const handleClick = () => {
+    navigate('/dataPrediction')
   }
 
   return (
-    <Grid container spacing={3}>
-      <Grid item xs={12} >
-        <Grid container>
-          {matchesUpMd &&
-            <Grid container spacing={1}>
-              <Sun >
-              </Sun>
+    <Grid
+      container
+      sx={{
+        backgroundImage: `url(${background})`,
+        backgroundSize: 'cover',
+        minHeight: '100vh',
+        backgroundRepeat: "repeat",
+      }}
+    >
+
+      <Grid item xs={1}></Grid>
+      <Grid item xs={10} style={{ marginTop: '18vh', height: '1rem' }}>
+        <Typography fontSize={{
+          lg: 60,
+          md: 20,
+          sm: 20,
+          xs: 20
+        }} align='center' style={{ color: 'white' }} sx={{ fontWeight: 'bold' }} >
+          {
+            language === 'english' ?
               <>
-                <> {manyHouses(2).map((index) => {
-                  return (
-                    generateRandomIcons(index)
-                  )
-                })} </>
-
+                The machine learning tool that was made to facilitate studies on the usage of solar panels in Costa Rica<br />
+              </> :
+              <>
+                La herramienta de machine learning que facilita  estudios en el uso de paneles solares
               </>
-            </Grid>
           }
-          <Grid container >
-            {matchesUpMd &&
-              <Grid container item xs={5} sm={5} style={{ padding: '2rem' }} >
-                <Avatar variant={"rounded"} alt="The image" src={peopleSolar} style={{
-                  width: '100%',
-                  height: '100%',
-                }} />
-                <Typography fontSize={{
-                  xs: 10
-                }} style={{ color: 'black' }}  >
-                  Image by rawpixel.com<br />
-                </Typography>
-              </Grid>
-            }
-
-            <Grid item xs={12} sm={6} style={{ padding: '2rem' }} >
-              <Grid
-                container
-                direction="column"
-                justifyContent="center"
-                alignItems="center"
-              >
-                <Typography fontSize={{
-                  lg: 60,
-                  md: 20,
-                  sm: 20,
-                  xs: 20
-                }}  style={{ color: 'rgb(173, 230, 185)' }} sx={{ fontWeight: 'bold' }} >
-                  {
-                    language === 'english' ?
-                      <>
-                        The machine learning tool that was made to facilitate studies on the usage of solar panels in Costa Rica<br />
-                      </> :
-                      <>
-                        La herramienta de machine learning que facilita  estudios en el uso de paneles solares
-                      </>
-                  }
-                </Typography>
-              </Grid>
-            </Grid>
-          </Grid>
-          {!matchesUpMd && <>
-            <Grid container>
-              <Sun >
-              </Sun>
-            </Grid>
-            <Grid container item xs={12} sm={5} style={{ padding: '2rem' }} >
-              <Avatar variant={"rounded"} alt="The image" src={peopleSolar} style={{
-                width: '100%',
-                height: '100%',
-              }} />
+        </Typography>
+      </Grid>
+      <Grid item xs={1}></Grid>
+      <Grid container justifyContent={'center'}
+        spacing={5} style={{ padding: '3rem', marginTop: '22vh' }}>
+       
+          <Grid item sm={3} >
+          <animated.div style={fadeProps1}>
+            <Paper style={{ background: 'rgba(204, 204, 204, 0.5)' }}>
               <Typography fontSize={{
-                xs: 10
-              }} style={{ color: 'rgb(173, 230, 185)' }}  >
-                Image by rawpixel.com<br />
+                lg: 30,
+                md: 20,
+                sm: 20,
+                xs: 20
+              }} align='center' style={{ color: '#FFF8DC' }} sx={{ fontWeight: 'bold' }} >
+                {
+                  language === 'english' ?
+                    <>
+                      More than 400 images used for training
+                      <br />
+                    </> :
+                    <>
+                      Más de 400 imágenes usadas en entrenamiento
+                    </>
+                }
               </Typography>
-            </Grid>
-          </>
-          }
-          <Grid container style={{ marginTop: '3rem' }} spacing={1}>
-            <Grid item xs={12}></Grid>
-            <>
-              {matchesUpSm &&
-                <>{manyHouses(20).map((index) => {
-                  return (
-                    generateRandomIcons(index)
-                  )
-                })} </>}
-            </>
-
+            </Paper>
+            </animated.div>
           </Grid>
+       
+        <Grid item sm={3} >
+        <animated.div style={fadeProps2}>
+          <Paper style={{ background: 'rgba(204, 204, 204, 0.5)' }}>
+            <Typography fontSize={{
+              lg: 30,
+              md: 20,
+              sm: 20,
+              xs: 20
+            }} align='center' style={{ color: '#FFF8DC' }} sx={{ fontWeight: 'bold' }} >
+              {
+                language === 'english' ?
+                  <>
+                    2 machine learning models, Classification and Semantic segmentation
+                    <br />
+                  </> :
+                  <>
+                    2 modelos de aprendizaje automatico, Clasificacion y Segmentacion semantica
+                  </>
+              }
+            </Typography>
+          </Paper>
+          </animated.div>
+        </Grid>
+        <Grid item sm={3} >
+        <animated.div style={fadeProps3}>
+          <Paper style={{ background: 'rgba(204, 204, 204, 0.5)' }}>
+        
+            <Typography fontSize={{
+              lg: 30,
+              md: 20,
+              sm: 20,
+              xs: 20
+            }} align='center' style={{ color: '#FFF8DC' }} sx={{ fontWeight: 'bold' }} >
+              {
+                language === 'english' ?
+                  <>
+                    Serverless architecture and Google Maps API
+                    <br />
+                  </> :
+                  <>
+                    Arquitectura serverless y Google Maps API
+                  </>
+              }
+            </Typography>
+           
+          </Paper>
+          </animated.div>
         </Grid>
       </Grid>
-      {matchesUpMd &&
-        <>
-          <div className="plants">
-            <div className="plant">
-              <div className="leave"></div>
-            </div>
-            <div className="plant plant2">
-              <div className="leave leave2"></div>
-            </div>
-            <div className="plant plant3">
-            </div>
-          </div>
-          <div className="plants2">
-            <div className="plant">
-              <div className="leave"></div>
-            </div>
-            <div className="plant plant2">
-              <div className="leave leave2"></div>
-            </div>
-            <div className="plant plant3">
-            </div>
-          </div>
-          <div className="plants3">
-            <div className="plant">
-              <div className="leave"></div>
-            </div>
-            <div className="plant plant2">
-              <div className="leave leave2"></div>
-            </div>
-            <div className="plant plant3">
-            </div>
-          </div>
-        </>
-      }
+      <Grid container justifyContent={'center'} >
+        <Grid item xs={1} >
+        <animated.div style={fadeProps4}>
+
+          <Button onClick={handleClick}>
+            <PlayCircleIcon style={{ fontSize: '10vh', color: 'white' }} ></PlayCircleIcon>
+          </Button>
+          </animated.div>
+        </Grid>
+      </Grid>
+
     </Grid>
 
   )

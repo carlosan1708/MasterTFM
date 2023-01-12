@@ -19,7 +19,7 @@ export const GeneralInfo = (props: { language: string }) => {
               md: 20,
               sm: 15,
               xs: 20
-            }}  style={{ color: 'rgb(173, 230, 185)' }} sx={{ fontWeight: 'bold' }} >
+            }}  style={{ color: '#476930' }} sx={{ fontWeight: 'bold' }} >
               {
                 language === 'english' ?
                   <>
@@ -31,7 +31,7 @@ export const GeneralInfo = (props: { language: string }) => {
             </Typography>
             <Typography fontSize={{
               xs: 20
-            }}  style={{ color: 'rgb(173, 230, 185)' }} sx={{ fontWeight: 'bold', marginTop: 'rem' }} >
+            }}  style={{ color: '#476930' }} sx={{ fontWeight: 'bold', marginTop: 'rem' }} >
               {
                 language === 'english' ?
                   <>
@@ -67,7 +67,7 @@ export const GeneralInfo = (props: { language: string }) => {
                   md: 20,
                   sm: 15,
                   xs: 20
-                }}  style={{ color: 'rgb(173, 230, 185)' }} sx={{ fontWeight: 'bold' }} >
+                }}  style={{ color: '#476930' }} sx={{ fontWeight: 'bold' }} >
                   {
                     language === 'english' ?
                       <>
@@ -111,7 +111,7 @@ export const GeneralInfo = (props: { language: string }) => {
                   md: 20,
                   sm: 15,
                   xs: 20
-                }}  style={{ color: 'rgb(173, 230, 185)' }} sx={{ fontWeight: 'bold' }} >
+                }}  style={{ color: '#476930' }} sx={{ fontWeight: 'bold' }} >
                   {
                     language === 'english' ?
                       <>
@@ -144,7 +144,7 @@ export const GeneralInfo = (props: { language: string }) => {
                   md: 20,
                   sm: 15,
                   xs: 20
-                }}  style={{ color: 'rgb(173, 230, 185)' }} sx={{ fontWeight: 'bold' }} >
+                }}  style={{ color: '#476930' }} sx={{ fontWeight: 'bold' }} >
                   {
                     language === 'english' ?
                       <>
@@ -161,7 +161,7 @@ export const GeneralInfo = (props: { language: string }) => {
         
         </Grid>
         <Grid container item sm={4} xs={12}>
-          <Card sx={{ display: 'flex', width: '100%', height: '20vh' }}>
+          <Card sx={{ display: 'flex', width: '100%', height: '25vh' }}>
             <Grid item xs={6}>
               <CardContent >
                 <Typography fontSize={{
@@ -169,7 +169,7 @@ export const GeneralInfo = (props: { language: string }) => {
                   md: 20,
                   sm: 15,
                   xs: 20
-                }}  style={{ color: 'rgb(173, 230, 185)' }} sx={{ fontWeight: 'bold' }} >
+                }}  style={{ color: '#476930' }} sx={{ fontWeight: 'bold' }} >
                   {
                     language === 'english' ?
                       <>

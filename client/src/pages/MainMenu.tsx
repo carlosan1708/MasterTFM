@@ -21,8 +21,6 @@ export default function ClippedDrawer() {
   const [mode, setMode] = React.useState<'english' | 'spanish'>('english');
   const location = useLocation()
 
-
-
   const languageMode = React.useMemo(
     () => ({
       toggleLanguageMode: () => {
@@ -32,106 +30,155 @@ export default function ClippedDrawer() {
     [],
   );
 
-  const listBasedLanguage = () =>{
-    if(mode === 'english'){
+  const listBasedLanguage = () => {
+    if (mode === 'english') {
       return ['Home', 'Capture', 'Prediction', 'Info']
-    }else{
+    } else {
       return ['Principal', 'Captura', 'Prediccion', 'Info']
     }
   }
-  return (
-    <>
-      <CssBaseline />
-      <AppBar position="fixed" sx={{ background: '#faf3dd' }}>
-        <Toolbar disableGutters >
-          <Typography style={{ color: '#476930' }} fontSize={{
-            lg: 40,
-            md: 20,
-            sm: 15,
-            xs: 15
-          }} sx={{ flexGrow: 1, display: { xs: 'block', sm: 'block' }, fontWeight: 'bold' }} noWrap component="div">
-            Costa Rica, Solar Panel Detector
-          </Typography>
-          <Box sx={{ display: { xs: 'block', sm: 'block' } }}>
+
+  const AppBarHoc: React.FC<any> = (props) => {
+    const { children } = props;
+
+    return (
+      <div>
+        {location.pathname === '/' ?
+          <AppBar position="fixed" sx={{ height: '7vh', backgroundColor: 'transparent' }}>
+            {children}
+          </AppBar>
+          :
+          <AppBar position="static" sx={{ height: '7vh', backgroundColor: 'white' }}>
+            {children}
+          </AppBar>
+        }
+      </div>
+    );
+  };
+
+
+  const MenuToolBar = () => {
+    return (
+      <Toolbar >
+        <Grid container justifyContent="flex-end">
+          <Grid item xs={4} sm={5}>
+          {location.pathname === '/' ?
+            <Typography style={{ color: '#white' }} fontSize={{
+              lg: 40,
+              md: 20,
+              sm: 15,
+              xs: 12
+            }} sx={{ fontWeight: 'bold' }} component="div">
+              Costa Rica, Solar Panel Detector
+            </Typography> :
+              <Typography style={{ color: '#476930' }} fontSize={{
+                lg: 40,
+                md: 20,
+                sm: 15,
+                xs: 12
+              }} sx={{ fontWeight: 'bold' }} component="div">
+                Costa Rica, Solar Panel Detector
+              </Typography>
+            }
+          </Grid>
+          <Grid container item xs={7} sm={5} justifyContent="center"  >
+            <>{listBasedLanguage().map((text, index) => (
+              <Grid item xs={3} sm={3}>
+                <ListItem key={text} disablePadding >
+                  {(location.pathname === '/' && index === 0)
+                    || location.pathname.substring(1).includes(pagesLinks[index]) ?
+                    <ListItemButton alignItems={'center'} component={Link} to={`${pagesLinks[index]}`}>
+                      {location.pathname !== '/' ? 
+                      <ListItemText primary={<Typography fontSize={{
+                        lg: 20,
+                        md: 10,
+                        sm: 10,
+                        xs: 10
+                      }} style={{ color: '#476930' }} sx={{ fontWeight: 'bold' }} align={'center'}>
+                        {text}
+                      </Typography>} />
+                      : 
+                      <ListItemText primary={<Typography fontSize={{
+                        lg: 20,
+                        md: 10,
+                        sm: 10,
+                        xs: 10
+                      }} style={{ color: 'white' }} sx={{ fontWeight: 'bold' }} align={'center'}>
+                        {text}
+                      </Typography>} />
+                      }
+
+                    </ListItemButton>
+                    :
+                    <ListItemButton alignItems={'center'} component={Link} to={`${pagesLinks[index]}`}>
+                      <ListItemText primary={<Typography fontSize={{
+                        lg: 20,
+                        md: 10,
+                        sm: 10,
+                        xs: 10
+                      }} style={{ color: 'grey' }} sx={{ fontWeight: 'bold' }} align={'center'}>
+                        {text}
+                      </Typography>} />
+                    </ListItemButton>
+                  }
+                </ListItem>
+              </Grid>
+            ))}</>
+          </Grid>
+          <Grid item xs={1} sm={2} container justifyContent="flex-end">
             <IconButton sx={{ ml: 1 }} onClick={languageMode.toggleLanguageMode} color="inherit">
               {mode === 'english' ? <Typography
                 fontSize={{
-                  lg: 25,
+                  lg: 20,
                   md: 15,
                   sm: 15,
                   xs: 10
                 }}
                 style={{ color: 'blue' }}>{'English'}</Typography> : <Typography
                   fontSize={{
-                    lg: 25,
+                    lg: 20,
                     md: 15,
                     sm: 15,
                     xs: 10
                   }}
-                  style={{ color: '#476930' }}>{'English'}</Typography>}
+                  style={{ color: 'black' }}>{'English'}</Typography>}
             </IconButton>
             <IconButton sx={{ ml: 1 }} onClick={languageMode.toggleLanguageMode} color="inherit">
               {mode === 'spanish' ? <Typography fontSize={{
-                lg: 25,
+                lg: 20,
                 md: 15,
                 sm: 15,
                 xs: 10
               }}
                 style={{ color: 'blue' }}>{'Spanish'}</Typography> : <Typography fontSize={{
-                  lg: 25,
+                  lg: 20,
                   md: 15,
                   sm: 15,
                   xs: 10
                 }}
-                  style={{ color: '#476930' }}>{'Spanish'}</Typography>}
+                  style={{ color: 'black' }}>{'Spanish'}</Typography>}
             </IconButton>
-          </Box>
-        </Toolbar>
-      </AppBar>
-      <Grid container style={{ marginTop: '5vh' }} spacing={2}>
-        <>{listBasedLanguage().map((text, index) => (
-          <Grid key={`${index}GridMainMenu`} item xs={3} sm={3}>
-            <ListItem key={text} disablePadding >
-            
-            {(location.pathname === '/' && index ===0)
-                || location.pathname.substring(1).includes(pagesLinks[index]) ?
-              <ListItemButton style={{backgroundColor:'#faf3dd' }} alignItems={'center'} selected={true} component={Link} to={`${pagesLinks[index]}`}>
-                  <ListItemText primary={<Typography fontSize={{
-                    lg: 30,
-                    md: 10,
-                    sm: 7,
-                    xs: 15
-                  }} style={{ color: '#476930' }}  sx={{ fontWeight: 'bold' }} align={'center'}>
-                    {text}
-                  </Typography>} />
-                  </ListItemButton>
-                  :
-                  <ListItemButton alignItems={'center'} selected={true} component={Link} to={`${pagesLinks[index]}`}>
-                  <ListItemText primary={<Typography fontSize={{
-                    lg: 30,
-                    md: 10,
-                    sm: 7,
-                    xs: 15
-                  }} style={{ color: '#faf3dd' }}  sx={{ fontWeight: 'bold' }} align={'center'}>
-                    {text}
-                  </Typography>} />
-              </ListItemButton>
-               }
-            </ListItem>
           </Grid>
-        ))}</>
-        <Grid item xs={12} >
-          <LanguageContext.Provider value={mode}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/dataCapture" element={<DataCapturePanel />} />
-              <Route path="/dataPrediction" element={<Predictions />} />
-              <Route path="/info" element={<Info />} />
-            </Routes>
-          </LanguageContext.Provider>
         </Grid>
-      </Grid>
-
+      </Toolbar>
+    )
+  }
+  return (
+    <>
+      <CssBaseline />
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBarHoc>
+          <MenuToolBar />
+        </AppBarHoc>
+      </Box>
+      <LanguageContext.Provider value={mode}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/dataCapture" element={<DataCapturePanel />} />
+          <Route path="/dataPrediction" element={<Predictions />} />
+          <Route path="/info" element={<Info />} />
+        </Routes>
+      </LanguageContext.Provider>
     </>
   );
 }

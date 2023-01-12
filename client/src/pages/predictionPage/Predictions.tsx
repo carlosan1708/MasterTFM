@@ -12,11 +12,21 @@ const Prediction = () => {
   const language = useContext(LanguageContext);
 
   return (
-    <Grid container spacing={1}>
+    <Grid container spacing={1} >
+      <Grid container item xs={12} justifyContent={'center'} style={{ marginTop: '3rem' }}>
+        <Grid item xs={3}>
+          <Paper>
+            <Typography variant="h5" textAlign={'center'}>
+              Navigate, click predict and AI system will detect the solar panels in the image.
+            </Typography>
+          </Paper>
+        </Grid>
+      </Grid>
       {matchesUp ?
         <Grid item xs={2}>
-          <Paper style={{ padding: '1rem' }}>
+          <Paper style={{ padding: '1rem', marginTop: '2vh' }}>
             <Grid container>
+
               <Grid item xs={10}>
                 <Typography variant="h5">
                   Instructions
@@ -24,7 +34,7 @@ const Prediction = () => {
                 <Divider style={{ marginBottom: '2rem' }} />
               </Grid>
               <Grid item xs={10}>
-                <Typography variant='h6' style={{ color: 'rgb(173, 230, 185)' }}>
+                <Typography variant='h6' style={{ color: '#476930' }}>
                   {
                     language === 'english' ?
                       <>
@@ -35,7 +45,7 @@ const Prediction = () => {
                   }
                 </Typography>
                 <br />
-                <Typography variant='body1' style={{ color: 'rgb(173, 230, 185)' }}>
+                <Typography variant='body1' style={{ color: '#476930' }}>
                   {
                     language === 'english' ?
                       <>
@@ -104,7 +114,7 @@ const Prediction = () => {
           </Paper>
         </Grid>
         :
-        <Paper style={{ padding: '1rem' }}>
+        <Paper style={{ padding: '1rem', marginTop: '2vh' }}>
           <Typography variant="subtitle2" style={{ marginLeft: '1rem' }}>
             Use PC to get more instructions, you can move the map and execute new predictions, if the area doesn't contain a solar panel, the prediction is not going to execute
           </Typography>
@@ -120,11 +130,11 @@ const Prediction = () => {
               allActions={false}
               imageScale={imageScale} />
           </Grid>
-          <Grid container item xs={12}>
-            <Grid item xs={6}>
+          <Grid container item xs={12} sm={4} >
+            <Grid item xs={6} >
               <Button style={{ marginTop: '2rem', marginRight: '1rem' }} size="large" color="info" variant={'contained'} onClick={setZoom}>Zoom</Button>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={6} >
               <Button style={{ marginTop: '2rem' }} size="large" variant={'contained'} color="success" onClick={generatePrediction}>Predict</Button>
             </Grid>
           </Grid>

@@ -15,7 +15,7 @@ let theme = createTheme({
     ].join(','),
   },
     palette: {
-        mode: 'dark',
+        mode: 'light',
           divider: grey[200],
           text: {
             primary: '#77a69d',
@@ -28,7 +28,7 @@ let theme = createTheme({
         MuiCssBaseline: {
           styleOverrides: {
             body: {
-              background: 'linear-gradient(90deg, rgba(24,54,15,1) 0%, rgba(67,116,104,1) 17%, rgba(28,96,54,1) 100%)',
+              background: '#C0C0C0',
               backgroundRepeat: "no-repeat",
               backgroundAttachment: "fixed",
             },

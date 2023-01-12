@@ -14,11 +14,20 @@ const DataCapturePanel = () => {
 
   return (
     <Grid container spacing={2} >
+       <Grid container item xs={12} justifyContent={'center'} style={{ marginTop: '3rem' }}>
+        <Grid item xs={3}>
+          <Paper>
+            <Typography variant="h5" textAlign={'center'}>
+              Navigate and download, to create a data set of images from Google
+            </Typography>
+          </Paper>
+        </Grid>
+      </Grid>
       {matchesUp ?
         <Grid item xs={2}>
           <Grid container >
 
-            <Paper style={{ padding: '1rem' }}>
+            <Paper style={{ padding: '1rem', marginTop: '2vh' }}>
               <Grid item xs={10}>
                 <Typography variant="h5">
                   Instructions
@@ -26,7 +35,7 @@ const DataCapturePanel = () => {
                 <Divider style={{ marginBottom: '2rem' }} />
               </Grid>
               <Grid item xs={10}>
-                <Typography variant='h6' style={{ color: 'rgb(173, 230, 185)' }}>
+                <Typography variant='h6' style={{ color: '#476930' }}>
                   {
                     language === 'english' ?
                       <>
@@ -112,7 +121,7 @@ const DataCapturePanel = () => {
 
         </>}
       {matchesUp ?
-        <Grid item xs={10}>
+        <Grid item xs={10} style={{ marginTop: '2vh'}}>
           <CustomGoogleMap
             handleOnLoad={handleOnLoad}
             clickAction={setZoom}
@@ -131,7 +140,7 @@ const DataCapturePanel = () => {
               allActions={true}
               imageScale={imageScale} />
           </Grid>
-          <Grid container item xs={12}>
+          <Grid container item xs={12} justifyContent="flex-start">
             <Grid item xs={6}>
               <Button style={{ marginTop: '2rem', marginRight: '1rem' }} size="large" color="info" variant={'contained'} onClick={setZoom}>Zoom</Button>
             </Grid>
