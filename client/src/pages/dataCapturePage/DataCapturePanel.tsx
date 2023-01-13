@@ -14,8 +14,8 @@ const DataCapturePanel = () => {
 
   return (
     <Grid container spacing={2} >
-       <Grid container item xs={12} justifyContent={'center'} style={{ marginTop: '3rem' }}>
-        <Grid item xs={3}>
+       <Grid container item xs={12} justifyContent={'center'} style={{ marginTop: '1rem' }}>
+       <Grid item xs={12} sm={5}>
           <Paper>
             <Typography variant="h5" textAlign={'center'}>
               Navigate and download, to create a data set of images from Google

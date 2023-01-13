@@ -18,7 +18,7 @@ let theme = createTheme({
         mode: 'light',
           divider: grey[200],
           text: {
-            primary: '#77a69d',
+            primary: '#000',
             secondary: grey[50],
           },
           info: {main: '#DFF5CE'},
@@ -37,6 +37,32 @@ let theme = createTheme({
 
       }
 });
+
+// Main legend
+theme.typography.h3 = {
+  fontSize: '3rem',
+  '@media (min-width:700px)': {
+    fontSize: '30rem',
+  }
+};
+
+// Title
+theme.typography.h4 = {
+  fontSize: '1rem',
+  '@media (min-width:700px)': {
+    fontSize: '3rem',
+  }
+};
+
+//Submenus
+theme.typography.h5 = {
+  fontSize: '0.5rem',
+  '@media (min-width:700px)': {
+    fontSize: '1.5rem',
+  }
+};
+
+
 
 theme = createTheme(theme, {
   palette: {

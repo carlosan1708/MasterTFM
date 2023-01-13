@@ -44,11 +44,11 @@ export default function ClippedDrawer() {
     return (
       <div>
         {location.pathname === '/' ?
-          <AppBar position="fixed" sx={{ height: '7vh', backgroundColor: 'transparent' }}>
+          <AppBar position="fixed" sx={{  backgroundColor: 'transparent' }}>
             {children}
           </AppBar>
           :
-          <AppBar position="static" sx={{ height: '7vh', backgroundColor: 'white' }}>
+          <AppBar position="static" sx={{  backgroundColor: 'white' }}>
             {children}
           </AppBar>
         }
@@ -59,29 +59,19 @@ export default function ClippedDrawer() {
 
   const MenuToolBar = () => {
     return (
-      <Toolbar >
-        <Grid container justifyContent="flex-end">
-          <Grid item xs={4} sm={5}>
+      <Toolbar disableGutters >
+        <Grid container alignItems="center" justifyContent="flex-end" style={{padding: '1rem'}}>
+          <Grid item xs={6} sm={5}>
           {location.pathname === '/' ?
-            <Typography style={{ color: '#white' }} fontSize={{
-              lg: 40,
-              md: 20,
-              sm: 15,
-              xs: 12
-            }} sx={{ fontWeight: 'bold' }} component="div">
+            <Typography style={{ color: 'white' }} variant={'h4'} sx={{ fontWeight: 'bold' }} component="div">
               Costa Rica, Solar Panel Detector
             </Typography> :
-              <Typography style={{ color: '#476930' }} fontSize={{
-                lg: 40,
-                md: 20,
-                sm: 15,
-                xs: 12
-              }} sx={{ fontWeight: 'bold' }} component="div">
+              <Typography style={{ color: '#0c262b' }} variant={'h4'} sx={{ fontWeight: 'bold' }} component="div">
                 Costa Rica, Solar Panel Detector
               </Typography>
             }
           </Grid>
-          <Grid container item xs={7} sm={5} justifyContent="center"  >
+          <Grid container item xs={6} sm={5} justifyContent="center"  >
             <>{listBasedLanguage().map((text, index) => (
               <Grid item xs={3} sm={3}>
                 <ListItem key={text} disablePadding >
@@ -89,21 +79,11 @@ export default function ClippedDrawer() {
                     || location.pathname.substring(1).includes(pagesLinks[index]) ?
                     <ListItemButton alignItems={'center'} component={Link} to={`${pagesLinks[index]}`}>
                       {location.pathname !== '/' ? 
-                      <ListItemText primary={<Typography fontSize={{
-                        lg: 20,
-                        md: 10,
-                        sm: 10,
-                        xs: 10
-                      }} style={{ color: '#476930' }} sx={{ fontWeight: 'bold' }} align={'center'}>
+                      <ListItemText primary={<Typography variant={'h5'}  style={{ color: '#0c262b' }} sx={{ fontWeight: 'bold' }} align={'center'}>
                         {text}
                       </Typography>} />
                       : 
-                      <ListItemText primary={<Typography fontSize={{
-                        lg: 20,
-                        md: 10,
-                        sm: 10,
-                        xs: 10
-                      }} style={{ color: 'white' }} sx={{ fontWeight: 'bold' }} align={'center'}>
+                      <ListItemText primary={<Typography variant={'h5'} style={{ color: 'white' }} sx={{ fontWeight: 'bold' }} align={'center'}>
                         {text}
                       </Typography>} />
                       }
@@ -111,12 +91,7 @@ export default function ClippedDrawer() {
                     </ListItemButton>
                     :
                     <ListItemButton alignItems={'center'} component={Link} to={`${pagesLinks[index]}`}>
-                      <ListItemText primary={<Typography fontSize={{
-                        lg: 20,
-                        md: 10,
-                        sm: 10,
-                        xs: 10
-                      }} style={{ color: 'grey' }} sx={{ fontWeight: 'bold' }} align={'center'}>
+                      <ListItemText primary={<Typography variant={'h5'} style={{ color: 'black' }} sx={{ fontWeight: 'bold' }} align={'center'}>
                         {text}
                       </Typography>} />
                     </ListItemButton>
@@ -125,39 +100,23 @@ export default function ClippedDrawer() {
               </Grid>
             ))}</>
           </Grid>
-          <Grid item xs={1} sm={2} container justifyContent="flex-end">
+          <Grid item xs={12} sm={2} container justifyContent="flex-end">
+            <Grid item xs={6}>
             <IconButton sx={{ ml: 1 }} onClick={languageMode.toggleLanguageMode} color="inherit">
               {mode === 'english' ? <Typography
-                fontSize={{
-                  lg: 20,
-                  md: 15,
-                  sm: 15,
-                  xs: 10
-                }}
+                variant={'h5'}
                 style={{ color: 'blue' }}>{'English'}</Typography> : <Typography
-                  fontSize={{
-                    lg: 20,
-                    md: 15,
-                    sm: 15,
-                    xs: 10
-                  }}
+                variant={'h5'}
                   style={{ color: 'black' }}>{'English'}</Typography>}
             </IconButton>
+            </Grid>
+            <Grid item xs={6}>
             <IconButton sx={{ ml: 1 }} onClick={languageMode.toggleLanguageMode} color="inherit">
-              {mode === 'spanish' ? <Typography fontSize={{
-                lg: 20,
-                md: 15,
-                sm: 15,
-                xs: 10
-              }}
-                style={{ color: 'blue' }}>{'Spanish'}</Typography> : <Typography fontSize={{
-                  lg: 20,
-                  md: 15,
-                  sm: 15,
-                  xs: 10
-                }}
+              {mode === 'spanish' ? <Typography variant={'h4'}
+                style={{ color: 'blue' }}>{'Spanish'}</Typography> : <Typography variant={'h5'}
                   style={{ color: 'black' }}>{'Spanish'}</Typography>}
             </IconButton>
+            </Grid>
           </Grid>
         </Grid>
       </Toolbar>

@@ -1,59 +1,59 @@
 import { useMutation } from '@tanstack/react-query';
-import  { useState } from 'react'
+import { useState } from 'react'
 import toast from 'react-hot-toast';
 import { segmentationClient } from '../../../http-segmentation';
 import { classificationClient } from '../../../http-classification';
 
 interface IRetrieveImageProps {
-    coordinates: object
-  }
-  
-interface IUseCustomGoogleMap {
-    imageScale: string
+  coordinates: object
 }
-function useCustomGoogleMap(props:IUseCustomGoogleMap ) {
+
+interface IUseCustomGoogleMap {
+  imageScale: string
+}
+function useCustomGoogleMap(props: IUseCustomGoogleMap) {
 
 
-    const {imageScale} = props
-    const [mapref, setMapRef] = useState<any>()
-    const [segmentationImage, setSegmentationImage] = useState<null | string>(null)
-    const [classificationResult, setClassificationResult] = useState<null | string>(null)
+  const { imageScale } = props
+  const [mapref, setMapRef] = useState<any>()
+  const [segmentationImage, setSegmentationImage] = useState<null | string>(null)
+  const [classificationResult, setClassificationResult] = useState<null | string>(null)
 
-    const handleOnLoad = (map: any) => {
-      setMapRef(map);
-    };
+  const handleOnLoad = (map: any) => {
+    setMapRef(map);
+  };
 
   const setZoom = () => {
     mapref.setZoom(Number(imageScale))
   };
 
-  const callSegmentation =async (mutationProps: IRetrieveImageProps) => {
-    let response = await segmentationClient.post('/',  mutationProps)
-  
+  const callSegmentation = async (mutationProps: IRetrieveImageProps) => {
+    let response = await segmentationClient.post('/', mutationProps)
+
     if (response.status !== 200) {
       toast.error('Network response was not ok')
     }
     response = response?.data?.image
-    if(typeof response == 'string'){
+    if (typeof response == 'string') {
       setSegmentationImage(response)
     }
   }
 
-  const callClassification =async (mutationProps: IRetrieveImageProps) => {
-    let response = await classificationClient.post('/',  mutationProps)
-  
+  const callClassification = async (mutationProps: IRetrieveImageProps) => {
+    let response = await classificationClient.post('/', mutationProps)
+
     if (response.status !== 200) {
       toast.error('Network response was not ok')
     }
     const isPanel = response?.data?.isPanel
-    if(typeof isPanel == 'string'){
+    if (typeof isPanel == 'string') {
       setClassificationResult(isPanel)
     }
     return response.data
   }
 
   const triggerSegmentation = useMutation({
-    mutationFn: (mutationProps: IRetrieveImageProps )  => {
+    mutationFn: (mutationProps: IRetrieveImageProps) => {
       return callSegmentation(mutationProps)
     },
     onSuccess: async () => {
@@ -71,14 +71,14 @@ function useCustomGoogleMap(props:IUseCustomGoogleMap ) {
     mutationFn: (mutationProps: IRetrieveImageProps) => {
       return callClassification(mutationProps)
     },
-    onSuccess: async (data ) => {
+    onSuccess: async (data) => {
       toast.dismiss();
-      if('isPanel' in data && data.isPanel === 1){
+      if ('isPanel' in data && data.isPanel === 1) {
         const newLat = mapref.center.lat();
         const newLong = mapref.center.lng();
         const coordinates_string = `${newLat},${newLong}`
-        triggerSegmentation.mutate({coordinates: [coordinates_string]})
-      }else{
+        triggerSegmentation.mutate({ coordinates: [coordinates_string] })
+      } else {
         toast.error("Model couldn't detect a panel in the area")
       }
     },
@@ -88,12 +88,12 @@ function useCustomGoogleMap(props:IUseCustomGoogleMap ) {
       toast.error(`Image failed when downloading, error: ${error}`)
     },
   })
-  
-  if(triggerClassification.isLoading){
+
+  if (triggerClassification.isLoading) {
     toast.loading("Working on prediction")
   }
 
-  if(triggerSegmentation.isLoading){
+  if (triggerSegmentation.isLoading) {
     toast.dismiss();
     toast.loading("Panel detected, working on mask")
   }
@@ -105,11 +105,11 @@ function useCustomGoogleMap(props:IUseCustomGoogleMap ) {
       const newLat = mapref.center.lat();
       const newLong = mapref.center.lng();
       const coordinates_string = `${newLat},${newLong}`
-      triggerClassification.mutate({coordinates: [coordinates_string]})
+      triggerClassification.mutate({ coordinates: [coordinates_string] })
     }
   };
-  
-  return {handleOnLoad, generatePrediction, setZoom , segmentationImage, classificationResult}
+
+  return { handleOnLoad, generatePrediction, setZoom, segmentationImage, classificationResult }
 }
 
 export default useCustomGoogleMap
