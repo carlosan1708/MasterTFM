@@ -1,11 +1,12 @@
-import { Button, Grid, Paper, Typography } from '@mui/material'
+import { Button, Grid, Paper, Typography, useMediaQuery, useTheme } from '@mui/material'
 
 import { LanguageContext } from '../MainMenu';
 import { useContext, useState } from 'react';
-import background from '../../images/background2.jpg'; // Import using relative path
 import { useNavigate } from 'react-router-dom';
-import PlayCircleIcon from '@mui/icons-material/PlayCircle';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { useSpring, animated } from '@react-spring/web'
+import sample from './../../images/background.webm';
+import background from '../../images/background2.jpg'; //
 
 
 export const Home = () => {
@@ -62,7 +63,7 @@ export const Home = () => {
   });
 
   const fadeProps4 = useSpring({
-    from: { opacity: 0,transform: 'translateY(100%)' },
+    from: { opacity: 0, transform: 'translateY(100%)' },
     to: {
       opacity: displayBox4 ? 1 : 0,
       transform: displayBox4 ? 'translateY(0%)' : 'translateY(100%)',
@@ -73,126 +74,167 @@ export const Home = () => {
   const handleClick = () => {
     navigate('/dataPrediction')
   }
+  const theme = useTheme();
+  const matchesUp = useMediaQuery(theme.breakpoints.up('md'));
+
 
   return (
-    <Grid
-      container
-      sx={{
-        backgroundImage: `url(${background})`,
-        backgroundSize: 'cover',
-        minHeight: '100vh',
-        backgroundRepeat: "repeat",
-      }}
-    >
+    <>
+      {matchesUp ?
+        <video style={{
+          position: 'absolute',
+          width: '100%',
+          minHeight: '100vh',
+          zIndex: -1,
+          filter: 'brightness(50%)',
+        }} src={sample} autoPlay loop muted />
+        :
+        <Grid
+          container
+          sx={{
+            position: 'absolute',
+            backgroundImage: `url(${background})`,
+            backgroundSize: 'cover',
+            minHeight: '100vh',
+            backgroundRepeat: "repeat",
+            zIndex: -1,
+          }}
+        ></Grid>
+      }
 
-      <Grid item xs={1}></Grid>
-      <Grid item xs={10} style={{ marginTop: '18vh', height: '1rem' }}>
-        <Typography fontSize={{
-          lg: 60,
-          md: 20,
-          sm: 20,
-          xs: 20
-        }} align='center' style={{ color: 'white' }} sx={{ fontWeight: 'bold' }} >
-          {
-            language === 'english' ?
-              <>
-                The machine learning tool that was made to facilitate studies on the usage of solar panels in Costa Rica<br />
-              </> :
-              <>
-                La herramienta de machine learning que facilita  estudios en el uso de paneles solares
-              </>
-          }
-        </Typography>
-      </Grid>
-      <Grid item xs={1}></Grid>
-      <Grid container justifyContent={'center'}
-        spacing={5} style={{ padding: '3rem', marginTop: '22vh' }}>
-       
-          <Grid item sm={3} >
-          <animated.div style={fadeProps1}>
-            <Paper style={{ background: 'rgba(204, 204, 204, 0.5)' }}>
-              <Typography fontSize={{
-                lg: 30,
-                md: 20,
-                sm: 20,
-                xs: 20
-              }} align='center' style={{ color: '#FFF8DC' }} sx={{ fontWeight: 'bold' }} >
-                {
-                  language === 'english' ?
-                    <>
-                      More than 400 images used for training
-                      <br />
-                    </> :
-                    <>
-                      Más de 400 imágenes usadas en entrenamiento
-                    </>
-                }
-              </Typography>
-            </Paper>
+
+      <Grid
+        container
+      >
+
+        <Grid item xs={1}></Grid>
+        <Grid item xs={10} style={{ marginTop: '20vh', height: '1rem' }}>
+
+          <Typography fontSize={{
+            lg: 60,
+            md: 20,
+            sm: 20,
+            xs: 20
+          }} align='center' style={{ color: 'white' }} sx={{ fontWeight: 'bold' }} >
+            {
+              language === 'english' ?
+                <>
+                  The machine learning tool that was made to facilitate studies on the usage of solar panels in Costa Rica<br />
+                </> :
+                <>
+                  La herramienta de machine learning que facilita  estudios en el uso de paneles solares
+                </>
+            }
+          </Typography>
+
+        </Grid>
+        <Grid item xs={1}></Grid>
+        {matchesUp &&
+          <Grid container justifyContent={'center'}
+            spacing={5} style={{ padding: '3rem', marginTop: '22vh' }}>
+
+            <Grid item sm={3} >
+              <animated.div style={fadeProps1}>
+                <Paper style={{ background: 'rgba(0, 0, 0, 0.7)' }}>
+                  <Typography fontSize={{
+                    lg: 30,
+                    md: 20,
+                    sm: 20,
+                    xs: 20
+                  }} align='center' style={{ color: 'white' }} sx={{ fontWeight: 'bold' }} >
+                    {
+                      language === 'english' ?
+                        <>
+                          More than 400 images used for training
+                          <br />
+                        </> :
+                        <>
+                          Más de 400 imágenes usadas en entrenamiento
+                        </>
+                    }
+                  </Typography>
+                </Paper>
+              </animated.div>
+            </Grid>
+
+            <Grid item sm={3} >
+              <animated.div style={fadeProps2}>
+                <Paper style={{ background: 'rgba(0, 0, 0, 0.7)' }}>
+                  <Typography fontSize={{
+                    lg: 30,
+                    md: 20,
+                    sm: 20,
+                    xs: 20
+                  }} align='center' style={{ color: 'white' }} sx={{ fontWeight: 'bold' }} >
+                    {
+                      language === 'english' ?
+                        <>
+                          2 machine learning models, Classification and Semantic segmentation
+                          <br />
+                        </> :
+                        <>
+                          2 modelos de aprendizaje automatico, Clasificacion y Segmentacion semantica
+                        </>
+                    }
+                  </Typography>
+                </Paper>
+              </animated.div>
+            </Grid>
+            <Grid item sm={3} >
+              <animated.div style={fadeProps3}>
+                <Paper style={{ background: 'rgba(0, 0, 0, 0.7)' }}>
+
+                  <Typography fontSize={{
+                    lg: 30,
+                    md: 20,
+                    sm: 20,
+                    xs: 20
+                  }} align='center' style={{ color: 'white' }} sx={{ fontWeight: 'bold' }} >
+                    {
+                      language === 'english' ?
+                        <>
+                          Serverless architecture and Google Maps API
+                          <br />
+                        </> :
+                        <>
+                          Arquitectura serverless y Google Maps API
+                        </>
+                    }
+                  </Typography>
+
+                </Paper>
+              </animated.div>
+            </Grid>
+          </Grid>
+        }
+        {matchesUp ?
+        <Grid container justifyContent={'center'} style={{ marginTop: '5vh' }} >
+          <Grid item container xs={1} justifyContent={'center'} >
+            <animated.div style={fadeProps4}>
+              <Paper style={{ background: 'white', borderRadius: '30%' }}>
+                <Button onClick={handleClick}>
+                  <PlayArrowIcon style={{ fontSize: '11vh', color: 'black' }} ></PlayArrowIcon>
+                </Button>
+              </Paper>
             </animated.div>
           </Grid>
-       
-        <Grid item sm={3} >
-        <animated.div style={fadeProps2}>
-          <Paper style={{ background: 'rgba(204, 204, 204, 0.5)' }}>
-            <Typography fontSize={{
-              lg: 30,
-              md: 20,
-              sm: 20,
-              xs: 20
-            }} align='center' style={{ color: '#FFF8DC' }} sx={{ fontWeight: 'bold' }} >
-              {
-                language === 'english' ?
-                  <>
-                    2 machine learning models, Classification and Semantic segmentation
-                    <br />
-                  </> :
-                  <>
-                    2 modelos de aprendizaje automatico, Clasificacion y Segmentacion semantica
-                  </>
-              }
-            </Typography>
-          </Paper>
-          </animated.div>
         </Grid>
-        <Grid item sm={3} >
-        <animated.div style={fadeProps3}>
-          <Paper style={{ background: 'rgba(204, 204, 204, 0.5)' }}>
-        
-            <Typography fontSize={{
-              lg: 30,
-              md: 20,
-              sm: 20,
-              xs: 20
-            }} align='center' style={{ color: '#FFF8DC' }} sx={{ fontWeight: 'bold' }} >
-              {
-                language === 'english' ?
-                  <>
-                    Serverless architecture and Google Maps API
-                    <br />
-                  </> :
-                  <>
-                    Arquitectura serverless y Google Maps API
-                  </>
-              }
-            </Typography>
-           
-          </Paper>
+        :
+        <Grid container justifyContent={'center'} style={{ marginTop: '50vh' }} >
+        <Grid item container xs={1} justifyContent={'center'} >
+          <animated.div style={fadeProps1}>
+            <Paper style={{ background: 'white', borderRadius: '30%' }}>
+              <Button onClick={handleClick}>
+                <PlayArrowIcon style={{ fontSize: '11vh', color: 'black' }} ></PlayArrowIcon>
+              </Button>
+            </Paper>
           </animated.div>
         </Grid>
       </Grid>
-      <Grid container justifyContent={'center'} >
-        <Grid item xs={1} >
-        <animated.div style={fadeProps4}>
+      }
 
-          <Button onClick={handleClick}>
-            <PlayCircleIcon style={{ fontSize: '10vh', color: 'white' }} ></PlayCircleIcon>
-          </Button>
-          </animated.div>
-        </Grid>
+
       </Grid>
-
-    </Grid>
-
+    </>
   )
 }

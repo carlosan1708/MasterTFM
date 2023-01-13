@@ -116,7 +116,15 @@ const Prediction = () => {
           :
           <Paper >
             <Typography variant="subtitle2" style={{ marginLeft: '1rem' }}>
-              Use PC to get more instructions, you can move the map and execute new predictions, if the area doesn't contain a solar panel, the prediction is not going to execute
+               {
+                    language === 'english' ?
+                      <>
+                                     Use PC to get more instructions, you can move the map and execute new predictions, if the area doesn't contain a solar panel, the prediction is not going to execute
+
+                      </> : <>
+                        Use la computadora para leer las instrucciones, se puede mover el mapa y ejecutar instrucciones. Si el area no contiene panel solar, no correra la prediccion completa.
+                      </>
+                  }
             </Typography>
           </Paper>
         }
@@ -144,7 +152,21 @@ const Prediction = () => {
             alignItems: "center",
             justifyContent: "center"
           }}><Button onClick={generatePrediction}><Typography variant={'h2'} style={{color: 'black'}}>Prediction Result</Typography></Button></Box>}
-          {classificationResult && (classificationResult === '1' ? <>Solar Panel detected</> : <>Solar Panel not detected</>)}
+          {classificationResult && (classificationResult === '1' ? <>
+          {
+                    language === 'english' ?
+                      <>
+Solar Panel detected
+                      </> : <>
+                      Panel Solar Detectado                    </>
+                  }
+                  </> : <>{
+                    language === 'english' ?
+                      <>
+No solar panel detected
+                      </> : <>
+                      No se encontro panel solar                 </>
+                  }</>)}
           {matchesUp ?
             <>    {segmentationImage &&
               <img style={{ width: '100%', height: '70%' }} src={`data:image/jpeg;base64,${segmentationImage}`} alt="predictionImage" />
