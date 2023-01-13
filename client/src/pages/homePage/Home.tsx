@@ -84,7 +84,7 @@ export const Home = () => {
         <video style={{
           position: 'absolute',
           width: '100%',
-          minHeight: '100vh',
+          minHeight: '90vh',
           zIndex: -1,
           filter: 'brightness(50%)',
         }} src={sample} autoPlay loop muted />
@@ -135,7 +135,7 @@ export const Home = () => {
 
             <Grid item sm={3} >
               <animated.div style={fadeProps1}>
-                <Paper style={{ background: 'rgba(0, 0, 0, 0.7)' }}>
+                <Paper style={{ background: 'black' }}>
                   <Typography fontSize={{
                     lg: 30,
                     md: 20,
@@ -159,7 +159,7 @@ export const Home = () => {
 
             <Grid item sm={3} >
               <animated.div style={fadeProps2}>
-                <Paper style={{ background: 'rgba(0, 0, 0, 0.7)' }}>
+                <Paper style={{ background: 'black' }}>
                   <Typography fontSize={{
                     lg: 30,
                     md: 20,
@@ -182,7 +182,7 @@ export const Home = () => {
             </Grid>
             <Grid item sm={3} >
               <animated.div style={fadeProps3}>
-                <Paper style={{ background: 'rgba(0, 0, 0, 0.7)' }}>
+                <Paper style={{ background: 'black' }}>
 
                   <Typography fontSize={{
                     lg: 30,
