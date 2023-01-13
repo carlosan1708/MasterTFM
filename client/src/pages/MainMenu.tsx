@@ -63,7 +63,7 @@ export default function ClippedDrawer() {
         <Grid container justifyContent="flex-end">
           <Grid item xs={4} sm={5}>
           {location.pathname === '/' ?
-            <Typography style={{ color: '#white' }} fontSize={{
+            <Typography style={{ color: 'white' }} fontSize={{
               lg: 40,
               md: 20,
               sm: 15,
@@ -71,7 +71,7 @@ export default function ClippedDrawer() {
             }} sx={{ fontWeight: 'bold' }} component="div">
               Costa Rica, Solar Panel Detector
             </Typography> :
-              <Typography style={{ color: '#476930' }} fontSize={{
+              <Typography style={{ color: '#0c262b' }} fontSize={{
                 lg: 40,
                 md: 20,
                 sm: 15,
@@ -94,7 +94,7 @@ export default function ClippedDrawer() {
                         md: 10,
                         sm: 10,
                         xs: 10
-                      }} style={{ color: '#476930' }} sx={{ fontWeight: 'bold' }} align={'center'}>
+                      }} style={{ color: '#0c262b' }} sx={{ fontWeight: 'bold' }} align={'center'}>
                         {text}
                       </Typography>} />
                       : 
@@ -116,7 +116,7 @@ export default function ClippedDrawer() {
                         md: 10,
                         sm: 10,
                         xs: 10
-                      }} style={{ color: 'grey' }} sx={{ fontWeight: 'bold' }} align={'center'}>
+                      }} style={{ color: 'black' }} sx={{ fontWeight: 'bold' }} align={'center'}>
                         {text}
                       </Typography>} />
                     </ListItemButton>

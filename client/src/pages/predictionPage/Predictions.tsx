@@ -14,7 +14,7 @@ const Prediction = () => {
   return (
     <Grid container spacing={1} >
       <Grid container item xs={12} justifyContent={'center'} style={{ marginTop: '3rem' }}>
-        <Grid item xs={3}>
+        <Grid item xs={12} sm={3}>
           <Paper>
             <Typography variant="h5" textAlign={'center'}>
               Navigate, click predict and AI system will detect the solar panels in the image.
@@ -34,7 +34,7 @@ const Prediction = () => {
                 <Divider style={{ marginBottom: '2rem' }} />
               </Grid>
               <Grid item xs={10}>
-                <Typography variant='h6' style={{ color: '#476930' }}>
+                <Typography variant='h6' style={{ color: '#0c262b' }}>
                   {
                     language === 'english' ?
                       <>
@@ -45,7 +45,7 @@ const Prediction = () => {
                   }
                 </Typography>
                 <br />
-                <Typography variant='body1' style={{ color: '#476930' }}>
+                <Typography variant='body1' style={{ color: '#0c262b' }}>
                   {
                     language === 'english' ?
                       <>
