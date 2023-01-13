@@ -15,7 +15,7 @@ const DataCapturePanel = () => {
   return (
     <Grid container spacing={2} >
        <Grid container item xs={12} justifyContent={'center'} style={{ marginTop: '3rem' }}>
-        <Grid item xs={3}>
+       <Grid item xs={12} sm={3}>
           <Paper>
             <Typography variant="h5" textAlign={'center'}>
               Navigate and download, to create a data set of images from Google
@@ -35,7 +35,7 @@ const DataCapturePanel = () => {
                 <Divider style={{ marginBottom: '2rem' }} />
               </Grid>
               <Grid item xs={10}>
-                <Typography variant='h6' style={{ color: '#476930' }}>
+                <Typography variant='h6' style={{ color: '#0c262b' }}>
                   {
                     language === 'english' ?
                       <>
@@ -108,6 +108,8 @@ const DataCapturePanel = () => {
           </Grid>
         </Grid>
         : <>
+        <Grid item xs={12} sm={3}>
+          <Paper>
           <Typography variant="subtitle2" style={{ marginLeft: '1rem' }}>
             {
               language === 'english' ?
@@ -118,7 +120,8 @@ const DataCapturePanel = () => {
                 </>
             }
           </Typography>
-
+          </Paper>
+          </Grid>
         </>}
       {matchesUp ?
         <Grid item xs={10} style={{ marginTop: '2vh'}}>

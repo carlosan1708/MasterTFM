@@ -19,7 +19,7 @@ export const GeneralInfo = (props: { language: string }) => {
               md: 20,
               sm: 15,
               xs: 20
-            }}  style={{ color: '#476930' }} sx={{ fontWeight: 'bold' }} >
+            }}  style={{ color: '#0c262b' }} sx={{ fontWeight: 'bold' }} >
               {
                 language === 'english' ?
                   <>
@@ -31,7 +31,7 @@ export const GeneralInfo = (props: { language: string }) => {
             </Typography>
             <Typography fontSize={{
               xs: 20
-            }}  style={{ color: '#476930' }} sx={{ fontWeight: 'bold', marginTop: 'rem' }} >
+            }}  style={{ color: '#0c262b' }} sx={{ fontWeight: 'bold', marginTop: 'rem' }} >
               {
                 language === 'english' ?
                   <>
@@ -67,7 +67,7 @@ export const GeneralInfo = (props: { language: string }) => {
                   md: 20,
                   sm: 15,
                   xs: 20
-                }}  style={{ color: '#476930' }} sx={{ fontWeight: 'bold' }} >
+                }}  style={{ color: '#0c262b' }} sx={{ fontWeight: 'bold' }} >
                   {
                     language === 'english' ?
                       <>
@@ -81,7 +81,7 @@ export const GeneralInfo = (props: { language: string }) => {
                   md: 10,
                   sm: 7,
                   xs: 5
-                }} color="text.secondary">
+                }} sx={{color: "black"}}>
                   Universitat Oberta de Catalunya
                 </Typography>
 
@@ -111,7 +111,7 @@ export const GeneralInfo = (props: { language: string }) => {
                   md: 20,
                   sm: 15,
                   xs: 20
-                }}  style={{ color: '#476930' }} sx={{ fontWeight: 'bold' }} >
+                }}  style={{ color: '#0c262b' }} sx={{ fontWeight: 'bold' }} >
                   {
                     language === 'english' ?
                       <>
@@ -126,7 +126,7 @@ export const GeneralInfo = (props: { language: string }) => {
                   md: 10,
                   sm: 7,
                   xs: 5
-                }} color="text.secondary">
+                }} sx={{color: "black"}}>
                    {
                     language === 'english' ?
                       <>
@@ -144,7 +144,7 @@ export const GeneralInfo = (props: { language: string }) => {
                   md: 20,
                   sm: 15,
                   xs: 20
-                }}  style={{ color: '#476930' }} sx={{ fontWeight: 'bold' }} >
+                }}  style={{ color: '#0c262b' }} sx={{ fontWeight: 'bold' }} >
                   {
                     language === 'english' ?
                       <>
@@ -169,7 +169,7 @@ export const GeneralInfo = (props: { language: string }) => {
                   md: 20,
                   sm: 15,
                   xs: 20
-                }}  style={{ color: '#476930' }} sx={{ fontWeight: 'bold' }} >
+                }}  style={{ color: '#0c262b' }} sx={{ fontWeight: 'bold' }} >
                   {
                     language === 'english' ?
                       <>
@@ -183,7 +183,7 @@ export const GeneralInfo = (props: { language: string }) => {
                   md: 10,
                   sm: 7,
                   xs: 5
-                }} color="text.secondary">
+                }} sx={{color: "black"}}>
                    Carlos Andres Rodriguez Trigueros
                    <br></br>
                   Sr Full Stack Developer

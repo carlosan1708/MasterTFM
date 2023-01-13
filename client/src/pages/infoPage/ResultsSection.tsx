@@ -17,7 +17,7 @@ export const ResultsSection = (props: { language: string }) => {
                     md: 20,
                     sm: 15,
                     xs: 20
-                }}  style={{ color: '#476930' }} sx={{ fontWeight: 'bold' }} >
+                }}  style={{ color: '#0c262b' }} sx={{ fontWeight: 'bold' }} >
                     {
                         language === 'english' ?
                             <>
@@ -33,7 +33,7 @@ export const ResultsSection = (props: { language: string }) => {
                     md: 15,
                     sm: 10,
                     xs: 10
-                }}  style={{ color: '#476930' }} sx={{ fontWeight: 'bold' }} >
+                }}  style={{ color: '#0c262b' }} sx={{ fontWeight: 'bold' }} >
                     {
                         language === 'english' ?
                             <>
@@ -50,7 +50,7 @@ export const ResultsSection = (props: { language: string }) => {
                     md: 15,
                     sm: 10,
                     xs: 10
-                }}  style={{ color: '#476930' }} sx={{ fontWeight: 'bold' }} >
+                }}  style={{ color: '#0c262b' }} sx={{ fontWeight: 'bold' }} >
                     {
                         language === 'english' ?
                             <>
