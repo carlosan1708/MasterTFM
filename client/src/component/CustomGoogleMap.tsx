@@ -20,7 +20,7 @@ const CustomGoogleMap = (props: IMapProps) => {
       onLoad={handleOnLoad}
       onClick={clickAction}
       onRightClick={rightClickAction}
-      mapContainerStyle={{ minWidth: '60vw', minHeight: '60vh', width: '100%', height: '100%' }}
+      mapContainerStyle={{ minWidth: '60vw', minHeight: '60vh', width: '100%', height: '80%' }}
       options={{ mapTypeId: 'satellite' }}
     />
     :

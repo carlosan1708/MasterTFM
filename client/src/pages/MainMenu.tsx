@@ -79,7 +79,7 @@ export default function ClippedDrawer() {
                     || location.pathname.substring(1).includes(pagesLinks[index]) ?
                     <ListItemButton alignItems={'center'} component={Link} to={`${pagesLinks[index]}`}>
                       {location.pathname !== '/' ? 
-                      <ListItemText primary={<Typography variant={'h5'}  style={{ color: '#0c262b' }} sx={{ fontWeight: 'bold' }} align={'center'}>
+                      <ListItemText primary={<Typography variant={'h5'}  style={{ color: 'blue' }} sx={{ fontWeight: 'bold' }} align={'center'}>
                         {text}
                       </Typography>} />
                       : 

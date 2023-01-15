@@ -32,9 +32,22 @@ since it's a full stack/machine learning combination there will be different ste
 Main requisites will include a running version of Python and Node JS in your system.
 
 ### Important:
+
 To be able to share the code, the API KEY's that appear have been disabled. 
 The website might not work fully unless a new API KEY is in place. 
 Main repository for UOC Final Master's degree work. 
+
+Citation
+
+@misc{carlosan1708:2023,
+  Author = {Carlos Rodriguez Trigueros},
+  Title = {Costa Rica, Solar Panel Detector},
+  Year = {2023},
+  Publisher = {GitHub},
+  Journal = {GitHub repository},
+  Howpublished = {\url{https://github.com/carlosan1708/MasterTFM}}
+}
+
 
 Credits:
 
@@ -44,7 +57,13 @@ Guidance:
 
 Use of resources/libraries:
 
-- https://github.com/qubvel/segmentation_models
+Pavel Iakubovskii, Segmentation Models, (2019), Github Repository
+https://github.com/qubvel/segmentation_models
+  
+Takumi Karasawa, PyTorch Image Classification, (2022), Github Repository
 - https://github.com/karasawatakumi/pytorch-image-classification
-- https://wandb.ai/site
 
+
+Disclaimer
+
+The code is provided as it is. It may work in your computer, it may not work. It may even crash it or create a paradox that could ultimately unravel the very fabric of the space-time continuum and destroy the entire universe. Just be careful and try to understand everything before using it. If you have questions, please carefully read the code. If this doesn't help, contact us. If you want to blame us for some reason, do not contact us.

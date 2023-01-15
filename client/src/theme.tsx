@@ -48,7 +48,7 @@ theme.typography.h3 = {
 
 // Title
 theme.typography.h4 = {
-  fontSize: '1rem',
+  fontSize: '2rem',
   '@media (min-width:700px)': {
     fontSize: '3rem',
   }

@@ -101,21 +101,12 @@ export const Home = () => {
           }}
         ></Grid>
       }
-
-
       <Grid
         container
       >
-
         <Grid item xs={1}></Grid>
         <Grid item xs={10} style={{ marginTop: '20vh', height: '1rem' }}>
-
-          <Typography fontSize={{
-            lg: 60,
-            md: 20,
-            sm: 20,
-            xs: 20
-          }} align='center' style={{ color: 'white' }} sx={{ fontWeight: 'bold' }} >
+          <Typography variant={'h3'} align='center' style={{ color: 'white' }} sx={{ fontWeight: 'bold' }} >
             {
               language === 'english' ?
                 <>
@@ -126,7 +117,6 @@ export const Home = () => {
                 </>
             }
           </Typography>
-
         </Grid>
         <Grid item xs={1}></Grid>
         {matchesUp &&
@@ -136,12 +126,7 @@ export const Home = () => {
             <Grid item sm={3} >
               <animated.div style={fadeProps1}>
                 <Paper style={{ background: 'black' }}>
-                  <Typography fontSize={{
-                    lg: 30,
-                    md: 20,
-                    sm: 20,
-                    xs: 20
-                  }} align='center' style={{ color: 'white' }} sx={{ fontWeight: 'bold' }} >
+                  <Typography variant={'h5'} align='center' style={{ color: 'white' }} sx={{ fontWeight: 'bold' }} >
                     {
                       language === 'english' ?
                         <>
@@ -160,12 +145,7 @@ export const Home = () => {
             <Grid item sm={3} >
               <animated.div style={fadeProps2}>
                 <Paper style={{ background: 'black' }}>
-                  <Typography fontSize={{
-                    lg: 30,
-                    md: 20,
-                    sm: 20,
-                    xs: 20
-                  }} align='center' style={{ color: 'white' }} sx={{ fontWeight: 'bold' }} >
+                  <Typography variant={'h5'} align='center' style={{ color: 'white' }} sx={{ fontWeight: 'bold' }} >
                     {
                       language === 'english' ?
                         <>
@@ -184,12 +164,7 @@ export const Home = () => {
               <animated.div style={fadeProps3}>
                 <Paper style={{ background: 'black' }}>
 
-                  <Typography fontSize={{
-                    lg: 30,
-                    md: 20,
-                    sm: 20,
-                    xs: 20
-                  }} align='center' style={{ color: 'white' }} sx={{ fontWeight: 'bold' }} >
+                  <Typography variant={'h5'} align='center' style={{ color: 'white' }} sx={{ fontWeight: 'bold' }} >
                     {
                       language === 'english' ?
                         <>
@@ -208,30 +183,30 @@ export const Home = () => {
           </Grid>
         }
         {matchesUp ?
-        <Grid container justifyContent={'center'} style={{ marginTop: '5vh' }} >
-          <Grid item container xs={1} justifyContent={'center'} >
-            <animated.div style={fadeProps4}>
-              <Paper style={{ background: 'white', borderRadius: '30%' }}>
-                <Button onClick={handleClick}>
-                  <PlayArrowIcon style={{ fontSize: '11vh', color: 'black' }} ></PlayArrowIcon>
-                </Button>
-              </Paper>
-            </animated.div>
+          <Grid container justifyContent={'center'} style={{ marginTop: '5vh' }} >
+            <Grid item container xs={1} justifyContent={'center'} >
+              <animated.div style={fadeProps4}>
+                <Paper style={{ background: 'white', borderRadius: '30%' }}>
+                  <Button onClick={handleClick}>
+                    <PlayArrowIcon style={{ fontSize: '11vh', color: 'black' }} ></PlayArrowIcon>
+                  </Button>
+                </Paper>
+              </animated.div>
+            </Grid>
           </Grid>
-        </Grid>
-        :
-        <Grid container justifyContent={'center'} style={{ marginTop: '50vh' }} >
-        <Grid item container xs={1} justifyContent={'center'} >
-          <animated.div style={fadeProps1}>
-            <Paper style={{ background: 'white', borderRadius: '30%' }}>
-              <Button onClick={handleClick}>
-                <PlayArrowIcon style={{ fontSize: '11vh', color: 'black' }} ></PlayArrowIcon>
-              </Button>
-            </Paper>
-          </animated.div>
-        </Grid>
-      </Grid>
-      }
+          :
+          <Grid container justifyContent={'center'} style={{ marginTop: '50vh' }} >
+            <Grid item container xs={1} justifyContent={'center'} >
+              <animated.div style={fadeProps1}>
+                <Paper style={{ background: 'white', borderRadius: '30%' }}>
+                  <Button onClick={handleClick}>
+                    <PlayArrowIcon style={{ fontSize: '11vh', color: 'black' }} ></PlayArrowIcon>
+                  </Button>
+                </Paper>
+              </animated.div>
+            </Grid>
+          </Grid>
+        }
 
 
       </Grid>
