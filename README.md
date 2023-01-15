@@ -9,20 +9,23 @@ This repository contains the code for a master's degree final project.
 https://costa-rica-solar.uc.r.appspot.com
 
 ## Website Preview
+
 ![Website](./website_gif.gif)
 
 
 ## Architecture.
+
 ![Architecture](./Architecture.png)
 
 ## Area: 
+
 Artificial Intelligence/ Full Stack Development.
 
 
 ## Stack:
 
-Web client: React, Typescript
-Model: Python, Pytorch.
+- Web client: React, Typescript
+- Model: Python, Pytorch.
 
 ## Installation: 
 
@@ -31,14 +34,11 @@ since it's a full stack/machine learning combination there will be different ste
 
 Main requisites will include a running version of Python and Node JS in your system.
 
-### Important:
+**Important! The API KEY's that appeagitr only works under an specific DNS. The website might not work fully unless a new API KEY is in place.**
 
-To be able to share the code, the API KEY's that appear have been disabled. 
-The website might not work fully unless a new API KEY is in place. 
-Main repository for UOC Final Master's degree work. 
+## Citation
 
-Citation
-
+```
 @misc{carlosan1708:2023,
   Author = {Carlos Rodriguez Trigueros},
   Title = {Costa Rica, Solar Panel Detector},
@@ -47,23 +47,23 @@ Citation
   Journal = {GitHub repository},
   Howpublished = {\url{https://github.com/carlosan1708/MasterTFM}}
 }
+```
 
+## Credits:
 
-Credits:
+##### Guidance:
 
-Guidance:
+Dr. Carlos Gaitan Potayos.
 
-- Dr. Carlos Gaitan Potayos.
-
-Use of resources/libraries:
+##### Use of resources/libraries:
 
 Pavel Iakubovskii, Segmentation Models, (2019), Github Repository
 https://github.com/qubvel/segmentation_models
   
 Takumi Karasawa, PyTorch Image Classification, (2022), Github Repository
-- https://github.com/karasawatakumi/pytorch-image-classification
+https://github.com/karasawatakumi/pytorch-image-classification
 
 
-Disclaimer
+## Disclaimer
 
 The code is provided as it is. It may work in your computer, it may not work. It may even crash it or create a paradox that could ultimately unravel the very fabric of the space-time continuum and destroy the entire universe. Just be careful and try to understand everything before using it. If you have questions, please carefully read the code. If this doesn't help, contact us. If you want to blame us for some reason, do not contact us.
