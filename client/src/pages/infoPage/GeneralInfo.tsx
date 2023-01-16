@@ -130,9 +130,9 @@ export const GeneralInfo = (props: { language: string }) => {
                    {
                     language === 'english' ?
                       <>
-                      Guidance: Dr. Carlos Gaitan Potayos, Spain </> :
+                      Guidance: Dr. Carlos Gaitan Poyatos, Spain </> :
                       <>
-                      Direccion: Dr. Carlos Gaitan Potayos, Spain </>
+                      Direccion: Dr. Carlos Gaitan Poyatos, Spain </>
                   }
                 </Typography>
               </CardContent>

@@ -1,9 +1,0 @@
-DATASET: (Incluye imagenes para posible modelo de clasificacion, aparte de las requeridas de modelo de segmentacion)
-
-https://drive.google.com/file/d/1EGlA_7tstx4blZdwHLvHoyzlw8BGFBws/view?usp=share_link
-
-REPOSITORIO: 
-
-https://github.com/carlosan1708/MasterTFM
-
-

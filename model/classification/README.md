@@ -3,7 +3,7 @@
 Please notice this repo and code was taken from:
 https://github.com/karasawatakumi/pytorch-image-classification
 
-There has been modifications, but I have made the right acknowledgments in the documentation of the project. 
+**There has been modifications**, but I have made the right acknowledgments in the documentation of the project. 
 
 Structure of the classification follow 3 folders.
 ![Folder structure for Costa Rica Solar Panel](./structure_folder.png)
@@ -21,7 +21,6 @@ Note: Sometimes it's complicated to recognized GPU in windows , with docker is n
 `python train.py -d ./dataset_classification --epochs=100 --batch-size=2 --model-name=efficientnet_b0`
 `python predict.py`
 
-bbcfad8a8aad2dcc383db09cec93effc082e2a8d
 
 Below instructions are from the original repository for which this code is based of
 
@@ -213,5 +212,3 @@ We logged training with [tensorboard](https://pytorch.org/docs/stable/tensorboar
 ```
 tensorboard --logdir ./results
 ```
-
-![image](https://user-images.githubusercontent.com/13147636/163080755-e97695c3-80ed-4242-91e9-fd6b14b921a6.png)

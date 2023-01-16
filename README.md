@@ -36,6 +36,15 @@ Main requisites will include a running version of Python and Node JS in your sys
 
 **Important! The API KEY's that appeagitr only works under an specific DNS. The website might not work fully unless a new API KEY is in place.**
 
+## Resources
+
+Includes classification dataset images, which contains solar panel and non solar panel satellite images.
+
+Include model dictionaries, for both segmentation and classification inference capabilities.
+
+https://drive.google.com/drive/folders/16zNzQDGhA06nSWuwwILTtzgOZ95DNBYA?usp=share_link
+
+
 ## Citation
 
 ```
@@ -53,7 +62,7 @@ Main requisites will include a running version of Python and Node JS in your sys
 
 ##### Guidance:
 
-Dr. Carlos Gaitan Potayos.
+Dr. Carlos Gaitan Poyatos.
 
 ##### Use of resources/libraries:
 

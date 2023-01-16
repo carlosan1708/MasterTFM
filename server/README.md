@@ -10,12 +10,19 @@ set FLASK_APP=segmentation
 set FLASK_ENV=development
 flask run
 
+**Note: For classification change FLASK_APP=classification**
+
+
+**To run , please download**: 
+https://drive.google.com/drive/folders/16zNzQDGhA06nSWuwwILTtzgOZ95DNBYA
 
 Instructions to deploy docker files to GCP (Made for Cloud Run)
 
 Requisites:
 
 Docker installation. 
+
+Deployment commands: 
 
 Classification
 
