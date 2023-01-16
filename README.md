@@ -10,8 +10,10 @@ https://costa-rica-solar.uc.r.appspot.com
 
 ## Website Preview
 
+
 ![Website](./website_gif.gif)
 
+Optimized for screens of 1920x1080
 
 ## Architecture.
 
